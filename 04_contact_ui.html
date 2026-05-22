@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | AI Web & Game Studio</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .form-card { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 500px; }
+        h1 { margin-bottom: 24px; color: #1a1a1a; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #4b5563; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; font-size: 16px; transition: border-color 0.2s; }
+        input:focus, textarea:focus { outline: none; border-color: #2563eb; }
+        textarea { height: 120px; resize: vertical; }
+        button { width: 100%; background-color: #2563eb; color: white; padding: 14px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.2s; }
+        button:hover { background-color: #1d4ed8; }
+        .nav-links { margin-top: 20px; text-align: center; }
+        .nav-links a { color: #6b7280; text-decoration: none; font-size: 14px; margin: 0 10px; }
+        .nav-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h1>Contact Us</h1>
+        
+        <!-- HTML Form for project inquiries -->
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <!-- Required input for the user's name -->
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <!-- Email type input ensures basic email format validation -->
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Project Inquiry</label>
+                <!-- Textarea for longer multi-line messages -->
+                <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+            </div>
+            
+            <button type="submit">Send Inquiry</button>
+        </form>
+
+        <div class="nav-links">
+            <a href="01_agency_intro.html">Home</a>
+            <a href="03_tools_table.html">Tools</a>
+        </div>
+    </div>
+</body>
+</html>
