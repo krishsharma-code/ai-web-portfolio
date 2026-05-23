@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - CSS Selectors</title>
+    <style>
+        /* Universal Selector: Applies to every element */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Element Selector: Targets all <body> elements */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ID Selector: Unique identifier (#) */
+        #main-title {
+            color: #00ffcc;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #00ffcc;
+            padding-bottom: 10px;
+        }
+
+        /* Class Selector: Reusable style (.) */
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        /* Descendant Selector: Targets <p> inside elements with class 'card' */
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Group Selector: Targets multiple elements */
+        h2, h3 {
+            color: #bb86fc;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="main-title">CSS Selectors</h1>
+
+    <div class="card">
+        <h2>Primary Card</h2>
+        <p>This section uses a <strong>class selector</strong> (.card) for the container and a <strong>descendant selector</strong> (.card p) for this text.</p>
+    </div>
+
+    <div class="card">
+        <h3>Secondary Card</h3>
+        <p>This demonstrates how classes are reusable across multiple elements.</p>
+    </div>
+
+</body>
+</html>

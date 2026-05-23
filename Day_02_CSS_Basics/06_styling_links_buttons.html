@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Styling Links & Buttons</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 50px;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+
+        /* Basic Anchor Styling */
+        a {
+            color: #00ffcc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        /* pseudo-class: hover */
+        a:hover {
+            color: #bb86fc;
+            text-decoration: underline;
+        }
+
+        /* Making an anchor look like a button */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #00ffcc;
+            color: #121212;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover state for button */
+        .btn:hover {
+            background-color: #121212;
+            color: #00ffcc;
+            box-shadow: 0 0 10px #00ffcc;
+            transform: translateY(-2px);
+        }
+
+        /* Active state (when clicked) */
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Links & Buttons</h1>
+
+    <p>Check out my <a href="#">GitHub Profile</a></p>
+
+    <a href="#" class="btn">HIRE ME</a>
+    <a href="#" class="btn" style="background-color: transparent; border: 1px solid #00ffcc; color: #00ffcc;">VIEW PROJECTS</a>
+
+</body>
+</html>

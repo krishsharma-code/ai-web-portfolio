@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Positioning Basics</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 50px;
+            font-family: sans-serif;
+            height: 2000px; /* To demonstrate fixed positioning on scroll */
+        }
+
+        /* Relative: Positioned relative to its normal position */
+        .parent {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #1e1e1e;
+            border: 2px solid #333;
+            margin: 50px auto;
+        }
+
+        /* Absolute: Positioned relative to the nearest positioned ancestor */
+        .absolute-child {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: #00ffcc;
+            color: #121212;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Fixed: Positioned relative to the viewport (always visible) */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #bb86fc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            cursor: pointer;
+            text-decoration: none;
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Positioning</h1>
+
+    <div class="parent">
+        Relative Parent
+        <div class="absolute-child">Absolute</div>
+    </div>
+
+    <p style="text-align: center;">Scroll down to see the Fixed Button (FAB) stay in place.</p>
+
+    <a href="#" class="fab">+</a>
+
+</body>
+</html>

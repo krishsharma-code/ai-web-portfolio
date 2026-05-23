@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Borders & Shadows</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card {
+            width: 250px;
+            height: 350px;
+            background-color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            
+            /* Border Properties */
+            border: 1px solid #333;
+            border-radius: 15px; /* Rounded corners */
+            
+            /* Box Shadow (x-offset, y-offset, blur, color) */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            
+            transition: transform 0.3s ease;
+        }
+
+        .neon-card {
+            border: 2px solid #00ffcc;
+            /* Glowing Neon Shadow */
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+        }
+
+        h3 {
+            color: #00ffcc;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Standard Card</h3>
+        <p>Simple border-radius and a subtle shadow for depth.</p>
+    </div>
+
+    <div class="card neon-card">
+        <h3>Neon Card</h3>
+        <p>Enhanced with a bright border and a matching glow shadow.</p>
+    </div>
+
+</body>
+</html>

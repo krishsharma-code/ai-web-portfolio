@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Styling Lists</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 50px;
+            font-family: sans-serif;
+        }
+
+        /* Vertical Navigation Menu from a List */
+        .nav-list {
+            list-style-type: none; /* Removes default bullets */
+            padding: 0;
+            width: 200px;
+        }
+
+        .nav-list li {
+            background-color: #1e1e1e;
+            margin-bottom: 5px;
+            border-left: 4px solid #bb86fc;
+            transition: background 0.3s;
+        }
+
+        .nav-list li a {
+            display: block;
+            padding: 15px;
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .nav-list li:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* Custom marker for unordered list */
+        .custom-bullets {
+            list-style-type: "▹ ";
+            color: #00ffcc;
+            padding-left: 20px;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Styling Lists</h1>
+
+    <h3>Navigation Concept</h3>
+    <ul class="nav-list">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Settings</a></li>
+    </ul>
+
+    <h3 style="margin-top: 40px;">Skill Set</h3>
+    <ul class="custom-bullets">
+        <li>Machine Learning</li>
+        <li>Cloud Architecture</li>
+        <li>Neural Networks</li>
+    </ul>
+
+</body>
+</html>

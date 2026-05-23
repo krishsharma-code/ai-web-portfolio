@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Flexbox Intro</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Flex Container */
+        .flex-container {
+            display: flex;
+            height: 100vh; /* Full viewport height */
+            
+            /* Main Axis alignment (horizontal by default) */
+            justify-content: center; 
+            
+            /* Cross Axis alignment (vertical by default) */
+            align-items: center; 
+            
+            gap: 20px;
+        }
+
+        .flex-item {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border: 1px solid #00ffcc;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            transition: background 0.3s;
+        }
+
+        .flex-item:hover {
+            background-color: rgba(0, 255, 204, 0.1);
+        }
+
+        h2 {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <h2>Item 1</h2>
+            <p>Perfectly Centered</p>
+        </div>
+        <div class="flex-item">
+            <h2>Item 2</h2>
+            <p>Using Flexbox</p>
+        </div>
+        <div class="flex-item">
+            <h2>Item 3</h2>
+            <p>Modern Layout</p>
+        </div>
+    </div>
+
+</body>
+</html>

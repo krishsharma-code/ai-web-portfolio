@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - The Box Model</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 50px;
+            font-family: sans-serif;
+        }
+
+        /* The Box Model Container */
+        .box-model-demo {
+            background-color: #333; /* Content Area */
+            color: white;
+            
+            /* 1. Content Size */
+            width: 300px;
+            
+            /* 2. Padding: Space inside the border */
+            padding: 30px;
+            
+            /* 3. Border: The edge of the box */
+            border: 10px solid #00ffcc;
+            
+            /* 4. Margin: Space outside the border */
+            margin: 40px auto;
+
+            text-align: center;
+        }
+
+        .label {
+            color: #00ffcc;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .explanation {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">The Box Model</h1>
+
+    <div class="box-model-demo">
+        <span class="label">CONTENT</span>
+        This text is the content. <br>
+        Surrounded by padding, then a border, then margin.
+    </div>
+
+    <p class="explanation">
+        Total Width = Content Width + Left/Right Padding + Left/Right Border <br>
+        (300px + 60px + 20px = 380px)
+    </p>
+
+</body>
+</html>

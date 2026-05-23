@@ -23,6 +23,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **13_article_aside.html**: Semantic page structuring using `<article>` and `<aside>` for content and sidebars.
 - **14_progress_meter.html**: Visualizing data and skill levels using `<progress>` and `<meter>` elements.
 
+### Day 2: CSS Styling & Box Model (`Day_02_CSS_Basics/`)
+- **01_css_selectors.html**: Mastering element, class, ID, and universal selectors for targeted styling.
+- **02_color_and_backgrounds.html**: Implementing hex/rgba colors, gradients, and patterned backgrounds.
+- **03_typography_fonts.html**: Advanced text styling including font-family, line-height, and weight.
+- **04_the_box_model.html**: Visual demonstration of content, padding, border, and margin relationships.
+- **05_borders_and_shadows.html**: Creating depth and modern UI cards with border-radius and box-shadow.
+- **06_styling_links_buttons.html**: Interactive states using hover/active pseudo-classes for professional buttons.
+- **07_styling_lists.html**: Converting standard lists into vertical navigation menus and custom-bullet lists.
+- **08_display_property.html**: Understanding the behavior of block, inline, and inline-block elements.
+- **09_positioning_basics.html**: Implementing complex layouts using relative, absolute, and fixed positioning.
+- **10_flexbox_intro.html**: Introduction to Flexbox for perfect vertical and horizontal centering.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.

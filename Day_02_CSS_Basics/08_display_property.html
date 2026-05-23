@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Display Property</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 40px;
+            font-family: sans-serif;
+        }
+
+        section {
+            margin-bottom: 40px;
+            border: 1px solid #333;
+            padding: 20px;
+        }
+
+        /* Block: Takes full width, starts on new line */
+        .block-element {
+            display: block;
+            background-color: #bb86fc;
+            color: #121212;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        /* Inline: Takes only necessary width, no top/bottom margins */
+        .inline-element {
+            display: inline;
+            background-color: #03dac6;
+            color: #121212;
+            padding: 5px;
+        }
+
+        /* Inline-Block: Like inline, but allows width/height and margins */
+        .inline-block-element {
+            display: inline-block;
+            background-color: #cf6679;
+            color: #121212;
+            width: 150px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Display Property</h1>
+
+    <section>
+        <h3>Block Elements</h3>
+        <div class="block-element">I am a div (block)</div>
+        <div class="block-element">I am another div (block)</div>
+    </section>
+
+    <section>
+        <h3>Inline Elements</h3>
+        <span class="inline-element">I am a span (inline)</span>
+        <span class="inline-element">I am another span (inline)</span>
+        <p style="margin-top: 10px;">Inline elements sit next to each other.</p>
+    </section>
+
+    <section>
+        <h3>Inline-Block Elements</h3>
+        <div class="inline-block-element">Box 1</div>
+        <div class="inline-block-element">Box 2</div>
+        <p>Inline-blocks sit next to each other but respect width/height.</p>
+    </section>
+
+</body>
+</html>
