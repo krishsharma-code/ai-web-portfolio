@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justify Content</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --neon-green: #39ff14;
+            --text-light: #e0e0e0;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-light); font-family: sans-serif; padding: 1rem; }
+        h1 { color: var(--neon-green); }
+        .container {
+            display: flex;
+            background: #151515;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+        }
+        .item { background: #333; border: 1px solid var(--neon-green); padding: 15px; }
+        
+        .start { justify-content: flex-start; }
+        .center { justify-content: center; }
+        .end { justify-content: flex-end; }
+        .between { justify-content: space-between; }
+        .around { justify-content: space-around; }
+    </style>
+</head>
+<body>
+    <h1>03. Justify Content (Main Axis)</h1>
+    <p>Center</p>
+    <div class="container center"><div class="item">1</div><div class="item">2</div><div class="item">3</div></div>
+    <p>Space Between</p>
+    <div class="container between"><div class="item">1</div><div class="item">2</div><div class="item">3</div></div>
+    <p>Space Around</p>
+    <div class="container around"><div class="item">1</div><div class="item">2</div><div class="item">3</div></div>
+    <p>Flex End</p>
+    <div class="container end"><div class="item">1</div><div class="item">2</div><div class="item">3</div></div>
+</body>
+</html>

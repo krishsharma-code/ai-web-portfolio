@@ -35,9 +35,22 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_positioning_basics.html**: Implementing complex layouts using relative, absolute, and fixed positioning.
 - **10_flexbox_intro.html**: Introduction to Flexbox for perfect vertical and horizontal centering.
 
+### Day 3: CSS Flexbox & Responsive Layouts (`Day_03_Flexbox_Layouts/`)
+- **01_flex_container_basics.html**: Initializing flex contexts with `display: flex`.
+- **02_flex_direction.html**: Controlling layout flow with `row` and `column` directions.
+- **03_justify_content.html**: Mastering main-axis alignment (center, space-between, etc.).
+- **04_align_items.html**: Precise cross-axis alignment for consistent element heights.
+- **05_flex_wrap.html**: Handling multi-line layouts and element overflow gracefully.
+- **06_flex_grow_shrink.html**: Creating dynamic, fluid elements that adapt to available space.
+- **07_order_property.html**: Decoupling visual order from HTML structure for flexible UIs.
+- **08_responsive_navbar.html**: Building a professional, adaptive navigation system.
+- **09_hero_section_center.html**: Implementing the industry-standard perfectly centered hero banner.
+- **10_card_grid_flex.html**: A modern 3-column project grid with hover effects and fluid sizing.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
+- **Design Aesthetic**: Modern Dark Mode with Neon Accents (Cyan, Lime, Purple).
 
 ## 🚀 Getting Started
 Simply open any of the `.html` files in a modern web browser to view the portfolio.

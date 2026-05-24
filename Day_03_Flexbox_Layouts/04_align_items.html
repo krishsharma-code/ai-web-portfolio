@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Align Items</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --neon-pink: #ff00ff;
+        }
+        body { background: var(--bg-dark); color: white; font-family: 'Courier New', Courier, monospace; }
+        .container {
+            display: flex;
+            height: 300px;
+            background: #111;
+            border: 2px dashed var(--neon-pink);
+            margin-bottom: 2rem;
+        }
+        .item { background: #222; border: 1px solid var(--neon-pink); padding: 20px; margin: 5px; }
+        
+        .stretch { align-items: stretch; }
+        .center { align-items: center; }
+        .start { align-items: flex-start; }
+        .end { align-items: flex-end; }
+    </style>
+</head>
+<body>
+    <h1 style="color: var(--neon-pink);">04. Align Items (Cross Axis)</h1>
+    <h3>Center</h3>
+    <div class="container center"><div class="item">Centered</div><div class="item">Items</div></div>
+    <h3>Flex End</h3>
+    <div class="container end"><div class="item">Bottom</div><div class="item">Aligned</div></div>
+</body>
+</html>

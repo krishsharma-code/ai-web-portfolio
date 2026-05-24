@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Grow and Shrink</title>
+    <style>
+        body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 2rem; }
+        .container {
+            display: flex;
+            background: #1a1a1a;
+            padding: 20px;
+            border: 1px solid #bc13fe;
+            gap: 10px;
+        }
+        .item {
+            background: #333;
+            border: 1px solid #bc13fe;
+            padding: 20px;
+            text-align: center;
+        }
+        .grow-1 { flex-grow: 1; } /* Takes up remaining space */
+        .grow-2 { flex-grow: 2; } /* Takes up twice as much space as grow-1 */
+    </style>
+</head>
+<body>
+    <h1 style="color: #bc13fe;">06. Flex Grow & Shrink</h1>
+    <p>Dynamic sizing based on available space.</p>
+    <div class="container">
+        <div class="item grow-1">Grow 1</div>
+        <div class="item grow-2">Grow 2 (Double)</div>
+        <div class="item">Static</div>
+    </div>
+</body>
+</html>

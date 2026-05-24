@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Basics - Container</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --neon-blue: #00f3ff;
+            --text-light: #e0e0e0;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        h1 { color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; }
+        .container {
+            display: flex; /* The Magic Line */
+            background-color: var(--card-bg);
+            border: 1px solid var(--neon-blue);
+            padding: 1rem;
+            width: 80%;
+            gap: 1rem;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+        .item {
+            background: linear-gradient(45deg, #121212, #252525);
+            border-left: 4px solid var(--neon-blue);
+            padding: 1.5rem;
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>01. Flex Container Basics</h1>
+    <p>By setting <code>display: flex</code>, this container's children automatically become flex items.</p>
+    <div class="container">
+        <div class="item">Node.js</div>
+        <div class="item">Python</div>
+        <div class="item">TypeScript</div>
+    </div>
+</body>
+</html>

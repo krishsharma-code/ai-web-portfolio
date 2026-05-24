@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Direction</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --neon-purple: #bc13fe;
+            --text-light: #e0e0e0;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+        h1 { color: var(--neon-purple); }
+        .section { margin-bottom: 3rem; }
+        .flex-container {
+            display: flex;
+            background: #111;
+            padding: 1rem;
+            border: 1px solid #333;
+            gap: 10px;
+        }
+        /* Direction Controls */
+        .row { flex-direction: row; }
+        .column { flex-direction: column; }
+
+        .item {
+            background: #222;
+            border: 1px solid var(--neon-purple);
+            padding: 1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>02. Flex Direction</h1>
+    
+    <div class="section">
+        <h3>Row (Default)</h3>
+        <div class="flex-container row">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Column</h3>
+        <div class="flex-container column">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+        </div>
+    </div>
+</body>
+</html>

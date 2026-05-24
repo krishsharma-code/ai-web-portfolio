@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #050505; color: #fff; font-family: sans-serif; }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
+            padding: 1rem 5%;
+            border-bottom: 2px solid #00f3ff;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.1);
+        }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; color: #00f3ff; }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover { color: #00f3ff; text-shadow: 0 0 10px #00f3ff; }
+        
+        /* Basic Responsiveness */
+        @media (max-width: 600px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">AI.STUDIO</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div style="padding: 2rem;">
+        <h1>08. Responsive Navbar</h1>
+        <p>A typical real-world use case for Flexbox.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Property</title>
+    <style>
+        body { background: #000; color: #eee; font-family: 'Segoe UI', sans-serif; padding: 2rem; }
+        .container { display: flex; gap: 1rem; padding: 20px; background: #111; border: 1px solid #39ff14; }
+        .item { padding: 20px; background: #222; border: 1px solid #39ff14; flex: 1; text-align: center; }
+        
+        /* Changing visual order without touching HTML */
+        .first { order: -1; }
+        .last { order: 5; }
+    </style>
+</head>
+<body>
+    <h1 style="color: #39ff14;">07. Order Property</h1>
+    <div class="container">
+        <div class="item">1 (Default)</div>
+        <div class="item last">2 (Sent to Last)</div>
+        <div class="item first">3 (Brought to First)</div>
+    </div>
+</body>
+</html>

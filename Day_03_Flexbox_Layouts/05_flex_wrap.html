@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Wrap</title>
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; padding: 2rem; }
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to next line */
+            gap: 15px;
+            background: #111;
+            padding: 20px;
+            width: 400px; /* Constrained width to force wrap */
+            border: 1px solid #00f3ff;
+        }
+        .item {
+            background: #222;
+            border: 1px solid #00f3ff;
+            padding: 20px;
+            width: 120px;
+            text-align: center;
+            box-shadow: inset 0 0 10px #00f3ff;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #00f3ff;">05. Flex Wrap</h1>
+    <p>Prevents items from shrinking indefinitely by pushing them to the next row.</p>
+    <div class="container">
+        <div class="item">Project A</div>
+        <div class="item">Project B</div>
+        <div class="item">Project C</div>
+        <div class="item">Project D</div>
+        <div class="item">Project E</div>
+    </div>
+</body>
+</html>
