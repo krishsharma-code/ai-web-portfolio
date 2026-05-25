@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - Grid Columns & Rows</title>
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --accent-purple: #a855f7;
+            --card-bg: #1e293b;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+        .grid-container {
+            display: grid;
+            /* 1fr takes remaining space. repeat() simplifies notation. minmax() ensures a floor. */
+            grid-template-columns: repeat(2, 1fr) minmax(100px, 300px);
+            grid-template-rows: repeat(2, 200px);
+            gap: 1.5rem;
+        }
+        .box {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>02 - Fractional Units, Repeat & MinMax</h1>
+    <div class="grid-container">
+        <div class="box">Column 1 (1fr)</div>
+        <div class="box">Column 2 (1fr)</div>
+        <div class="box">Column 3 (minmax)</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 5</div>
+        <div class="box">Box 6</div>
+    </div>
+</body>
+</html>
