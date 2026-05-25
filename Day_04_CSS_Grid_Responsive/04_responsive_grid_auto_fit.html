@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - Auto-Fit Magic</title>
+    <style>
+        :root {
+            --bg: #111;
+            --neon: #22c55e;
+            --box-bg: #1a1a1a;
+        }
+        body {
+            background: var(--bg);
+            color: #eee;
+            font-family: sans-serif;
+            padding: 2rem;
+        }
+        .auto-grid {
+            display: grid;
+            /* AUTO-FIT magic: Automatically adds columns as space allows without media queries! */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--box-bg);
+            padding: 30px;
+            border-bottom: 3px solid var(--neon);
+            border-radius: 4px;
+            text-align: center;
+        }
+        .card h3 { color: var(--neon); }
+    </style>
+</head>
+<body>
+    <h1>04 - Responsive Grid: Auto-Fit</h1>
+    <p>Resize your browser window to see the grid items reflow automatically without using media queries.</p>
+    <div class="auto-grid">
+        <div class="card"><h3>Feature One</h3><p>Self-adjusting component.</p></div>
+        <div class="card"><h3>Feature Two</h3><p>Responsive by default.</p></div>
+        <div class="card"><h3>Feature Three</h3><p>Fluid grid layout.</p></div>
+        <div class="card"><h3>Feature Four</h3><p>Modern CSS technique.</p></div>
+        <div class="card"><h3>Feature Five</h3><p>Infinite scalability.</p></div>
+        <div class="card"><h3>Feature Six</h3><p>Smart layout engine.</p></div>
+    </div>
+</body>
+</html>
