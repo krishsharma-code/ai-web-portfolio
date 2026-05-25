@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - Media Queries Intro</title>
+    <style>
+        body {
+            background: #000;
+            color: white;
+            transition: background 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .status::after { content: "DESKTOP VIEW"; color: #0ea5e9; font-size: 3rem; font-weight: 900; }
+
+        /* Tablet Breakpoint (Up to 1024px) */
+        @media (max-width: 1024px) {
+            body { background: #1e1b4b; }
+            .status::after { content: "TABLET VIEW"; color: #a855f7; }
+        }
+
+        /* Mobile Breakpoint (Up to 600px) */
+        @media (max-width: 600px) {
+            body { background: #450a0a; }
+            .status::after { content: "MOBILE VIEW"; color: #ef4444; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="status">CURRENT: </h1>
+        <p>Resize the window width to trigger media queries and change the background/text.</p>
+    </div>
+</body>
+</html>
