@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - Full Responsive Landing</title>
+    <style>
+        :root {
+            --accent: #22d3ee;
+            --bg: #08090a;
+            --surface: #121417;
+        }
+        body { background: var(--bg); color: #ccc; font-family: sans-serif; margin: 0; }
+        
+        .nav { height: 60px; border-bottom: 1px solid #333; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
+        .logo { color: var(--accent); font-weight: bold; font-size: 1.2rem; }
+
+        .hero { 
+            height: 400px; 
+            display: grid; 
+            place-items: center; 
+            background: radial-gradient(circle at center, #164e63, var(--bg)); 
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; color: white; margin-bottom: 0; }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 4rem 5%;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #222;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .content-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .nav { justify-content: center; }
+            .nav .links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">AI_RECON</div>
+        <div class="links">Services • About • Contact</div>
+    </div>
+
+    <div class="hero">
+        <div>
+            <h1>The Intelligence Layer</h1>
+            <p>Future-proof web solutions powered by autonomous logic.</p>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="card"><h3>Scalable Core</h3><p>Distributed infrastructure for high-traffic AI workloads.</p></div>
+        <div class="card"><h3>Visual Logic</h3><p>Computer vision integration for real-time analysis.</p></div>
+        <div class="card"><h3>Neural API</h3><p>Direct hook into our proprietary LLM cluster.</p></div>
+    </div>
+</body>
+</html>
