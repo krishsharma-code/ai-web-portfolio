@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - CSS Transitions & Hover</title>
+    <style>
+        body {
+            background: #000;
+            color: white;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            gap: 20px;
+        }
+        .item {
+            height: 200px;
+            background: #111;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-radius: 10px;
+            cursor: pointer;
+            /* Defining the transition for smooth animation */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .item:hover {
+            background: #0ea5e9;
+            transform: translateY(-10px) rotate(5deg);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.4);
+            border-color: #7dd3fc;
+        }
+    </style>
+</head>
+<body>
+    <h1>09 - Interaction & Smooth Hover</h1>
+    <div class="grid">
+        <div class="item">🚀</div>
+        <div class="item">💻</div>
+        <div class="item">⚡</div>
+        <div class="item">🔥</div>
+        <div class="item">🌐</div>
+        <div class="item">🤖</div>
+    </div>
+</body>
+</html>
