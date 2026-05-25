@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - Grid Template Areas</title>
+    <style>
+        :root {
+            --bg: #0c0a09;
+            --sidebar: #1c1917;
+            --main: #292524;
+            --accent: #f97316;
+        }
+        body {
+            background-color: var(--bg);
+            color: #d6d3d1;
+            font-family: monospace;
+            margin: 0;
+            display: grid;
+            height: 100vh;
+            gap: 10px;
+            /* Defining the blueprint of the layout */
+            grid-template-areas: 
+                "header header header"
+                "nav main aside"
+                "footer footer footer";
+            grid-template-rows: 80px 1fr 60px;
+            grid-template-columns: 200px 1fr 200px;
+        }
+        header { grid-area: header; background: var(--accent); color: black; font-size: 1.5rem; display: flex; align-items: center; padding: 0 20px; }
+        nav { grid-area: nav; background: var(--sidebar); border-right: 1px solid var(--accent); padding: 20px; }
+        main { grid-area: main; background: var(--main); padding: 40px; }
+        aside { grid-area: aside; background: var(--sidebar); border-left: 1px solid var(--accent); padding: 20px; }
+        footer { grid-area: footer; background: #000; border-top: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+    <header>AI Portfolio Dashboard</header>
+    <nav>Navigation Links</nav>
+    <main>
+        <h1>Main Content Area</h1>
+        <p>Using <code>grid-template-areas</code> allows for high-level layout management that is easy to read and modify.</p>
+    </main>
+    <aside>Status Widgets</aside>
+    <footer>© 2026 AI Web Portfolio</footer>
+</body>
+</html>
