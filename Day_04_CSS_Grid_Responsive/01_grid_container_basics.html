@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - CSS Grid Basics</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --accent-neon: #0ea5e9;
+            --card-bg: #1e293b;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 2rem;
+        }
+        .grid-container {
+            display: grid; /* THE MAGIC LINE */
+            grid-template-columns: auto auto auto; /* 3 columns based on content size */
+            gap: 20px;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--accent-neon);
+        }
+        .grid-item {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>01 - Grid Container Basics</h1>
+    <p>Using <code>display: grid</code> to create a basic 3-column layout.</p>
+    <div class="grid-container">
+        <div class="grid-item">Node A</div>
+        <div class="grid-item">Node B</div>
+        <div class="grid-item">Node C</div>
+        <div class="grid-item">Node D</div>
+        <div class="grid-item">Node E</div>
+        <div class="grid-item">Node F</div>
+    </div>
+</body>
+</html>
