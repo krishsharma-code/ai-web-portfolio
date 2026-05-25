@@ -47,6 +47,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_hero_section_center.html**: Implementing the industry-standard perfectly centered hero banner.
 - **10_card_grid_flex.html**: A modern 3-column project grid with hover effects and fluid sizing.
 
+### Day 4: CSS Grid & Responsive Design (`Day_04_CSS_Grid_Responsive/`)
+- **01_grid_container_basics.html**: Initializing grid contexts with `display: grid`.
+- **02_grid_columns_rows.html**: Mastering `fr` units, `repeat()`, and `minmax()` for layout control.
+- **03_grid_template_areas.html**: Semantic layout mapping using named grid areas.
+- **04_responsive_grid_auto_fit.html**: Creating self-adjusting layouts with `auto-fit` and `auto-fill`.
+- **05_media_queries_intro.html**: Implementing standard breakpoints for Mobile, Tablet, and Desktop.
+- **06_mobile_first_layout.html**: Designing robust layouts starting from the smallest screen size.
+- **07_bento_box_portfolio.html**: A modern "Bento Box" grid layout for showcasing AI projects.
+- **08_gaming_character_gallery.html**: A responsive image-heavy grid for gaming assets with hover tags.
+- **09_css_transitions_hover.html**: Adding fluid animations and depth with 3D transforms and shadows.
+- **10_full_responsive_landing.html**: A complete, mobile-ready landing page combining all Grid and Media Query concepts.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
