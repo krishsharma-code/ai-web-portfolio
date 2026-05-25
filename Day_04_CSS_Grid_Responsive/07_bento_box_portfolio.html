@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04 - Bento Box Portfolio</title>
+    <style>
+        :root {
+            --bg: #030303;
+            --card: #0a0a0a;
+            --accent: #facc15;
+            --text: #a1a1aa;
+        }
+        body {
+            background: var(--bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 200px);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .bento-item {
+            background: var(--card);
+            border: 1px solid #1a1a1a;
+            border-radius: 24px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: border-color 0.3s ease;
+        }
+        .bento-item:hover { border-color: var(--accent); }
+        .bento-item h2 { margin: 0; font-size: 1.25rem; color: var(--accent); }
+        .bento-item p { color: var(--text); font-size: 0.875rem; }
+
+        /* Specific spans for the bento look */
+        .large { grid-column: span 2; grid-row: span 2; }
+        .wide { grid-column: span 2; }
+        .tall { grid-row: span 2; }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+            .large, .wide, .tall { grid-column: span 2; grid-row: span 1; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>07 - AI Projects: Bento Box</h1>
+    <div class="bento-grid">
+        <div class="bento-item large"><h2>NeuroGen-X</h2><p>Advanced LLM Architecture.</p></div>
+        <div class="bento-item"><h2>Vision-A</h2><p>CV Processing.</p></div>
+        <div class="bento-item"><h2>Data-S</h2><p>Analytics Bot.</p></div>
+        <div class="bento-item wide"><h2>CyberGuard AI</h2><p>Security automation.</p></div>
+        <div class="bento-item tall"><h2>Quantum-L</h2><p>Future compute.</p></div>
+        <div class="bento-item"><h2>Robo-T</h2><p>Automation logic.</p></div>
+        <div class="bento-item"><h2>Cloud-9</h2><p>Infrastructure AI.</p></div>
+    </div>
+</body>
+</html>
