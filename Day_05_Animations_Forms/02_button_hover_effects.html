@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: Button Hover Effects</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d50bb;
+            --neon-green: #39ff14;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            gap: 30px;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            color: white;
+        }
+
+        /* Glowing Blue Button */
+        .btn-blue {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .btn-blue:hover {
+            background-color: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+            transform: scale(1.05);
+        }
+
+        /* Gradient Sweep Button */
+        .btn-purple {
+            background: linear-gradient(90deg, #6e48aa, #9d50bb);
+            box-shadow: 0 5px 15px rgba(157, 80, 187, 0.4);
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(157, 80, 187, 0.6);
+        }
+
+        /* Neon Green Glow */
+        .btn-green {
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+        }
+
+        .btn-green:hover {
+            color: black;
+            background-color: var(--neon-green);
+            box-shadow: 0 0 30px var(--neon-green);
+            font-weight: bold;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1>Modern Button Effects</h1>
+    <button class="btn btn-blue">Pulse Wave</button>
+    <button class="btn btn-purple">Gradient Lift</button>
+    <button class="btn btn-green">Neon Strike</button>
+</body>
+</html>
