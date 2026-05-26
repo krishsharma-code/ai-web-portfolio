@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: CSS Keyframes Intro</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent-color: #00ffcc;
+            --text-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-color), #0099ff);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+            animation: moveAround 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                transform: translate(150px, 0) rotate(90deg);
+                border-radius: 50%;
+            }
+            50% {
+                transform: translate(150px, 150px) rotate(180deg);
+                border-radius: 15px;
+            }
+            75% {
+                transform: translate(0, 150px) rotate(270deg);
+                border-radius: 50%;
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Keyframes Animation</h1>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
