@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: Styled Contact Form</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --accent: #58a6ff;
+            --border: #30363d;
+            --text: #c9d1d9;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contact-container {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: white;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #238636;
+            color: white;
+            border: 1px solid rgba(240,246,252,0.1);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2ea043;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h2>Initiate Contact</h2>
+        <form action="#">
+            <div class="row">
+                <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" placeholder="Enter last name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Work Email</label>
+                <input type="email" id="email" placeholder="name@company.com">
+            </div>
+            <div class="form-group">
+                <label for="subject">Project Subject</label>
+                <input type="text" id="subject" placeholder="What's your vision?">
+            </div>
+            <div class="form-group">
+                <label for="message">Detailed Message</label>
+                <textarea id="message" rows="5" placeholder="Tell us more about your requirements..."></textarea>
+            </div>
+            <button type="submit">Send Transmission</button>
+        </form>
+    </div>
+</body>
+</html>
