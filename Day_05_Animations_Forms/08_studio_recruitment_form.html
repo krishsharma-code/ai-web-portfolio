@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: VS Gaming Studio Recruitment</title>
+    <style>
+        :root {
+            --studio-red: #ff4655;
+            --studio-dark: #0f1923;
+            --studio-white: #ece8e1;
+        }
+
+        body {
+            background-color: var(--studio-dark);
+            color: var(--studio-white);
+            font-family: 'Din Next', sans-serif;
+            margin: 0;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-wrapper {
+            max-width: 600px;
+            width: 100%;
+            border-left: 5px solid var(--studio-red);
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .form-wrapper::before {
+            content: 'RECRUITMENT';
+            position: absolute;
+            top: -40px;
+            left: 30px;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: var(--studio-red);
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        p.subtitle {
+            margin-bottom: 40px;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        input, select, textarea {
+            background-color: rgba(236, 232, 225, 0.05);
+            border: 1px solid rgba(236, 232, 225, 0.2);
+            padding: 12px;
+            color: var(--studio-white);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--studio-red);
+            background-color: rgba(236, 232, 225, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            accent-color: var(--studio-red);
+            width: 18px;
+            height: 18px;
+        }
+
+        button {
+            margin-top: 40px;
+            background-color: var(--studio-red);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <h1>Join the Studio</h1>
+        <p class="subtitle">VS Gaming Studio is looking for top-tier developers and artists.</p>
+        
+        <form>
+            <div class="input-row">
+                <div class="field">
+                    <label>Agent Name</label>
+                    <input type="text" placeholder="e.g. Phoenix_Dev">
+                </div>
+                <div class="field">
+                    <label>Specialization</label>
+                    <select>
+                        <option>Front-End Engineering</option>
+                        <option>3D Character Design</option>
+                        <option>Game Mechanics (C#)</option>
+                        <option>Network Infrastructure</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field" style="margin-bottom: 25px;">
+                <label>Portfolio Link / GitHub</label>
+                <input type="url" placeholder="https://github.com/yourname">
+            </div>
+
+            <div class="field">
+                <label>Experience Level</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="exp" value="junior"> Junior
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="exp" value="mid"> Mid-Level
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="exp" value="senior"> Senior
+                    </label>
+                </div>
+            </div>
+
+            <div class="field" style="margin-top: 25px;">
+                <label>Why VS Gaming Studio?</label>
+                <textarea rows="4" placeholder="Your motivation..."></textarea>
+            </div>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>
