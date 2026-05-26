@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: Input Focus States</title>
+    <style>
+        :root {
+            --bg: #03001C;
+            --valid: #00FFCA;
+            --invalid: #FF2E63;
+            --focus: #7B22FF;
+            --text: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            width: 350px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #555;
+            padding: 10px 0;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            pointer-events: none;
+            transition: 0.3s;
+            color: #888;
+        }
+
+        /* Float label on focus or if input is not empty */
+        input:focus ~ label,
+        input:not(:placeholder-shown) ~ label {
+            top: -15px;
+            font-size: 12px;
+            color: var(--focus);
+        }
+
+        /* Focus State */
+        input:focus {
+            border-bottom: 2px solid var(--focus);
+        }
+
+        /* Validation States */
+        input:not(:placeholder-shown):valid {
+            border-bottom: 2px solid var(--valid);
+        }
+
+        input:not(:placeholder-shown):valid ~ label {
+            color: var(--valid);
+        }
+
+        input:not(:placeholder-shown):invalid {
+            border-bottom: 2px solid var(--invalid);
+        }
+
+        input:not(:placeholder-shown):invalid ~ label {
+            color: var(--invalid);
+        }
+
+        .helper-text {
+            font-size: 10px;
+            margin-top: 5px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        input:not(:placeholder-shown):invalid ~ .helper-text {
+            opacity: 1;
+            color: var(--invalid);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h2>Validation UI</h2>
+        <div class="input-box">
+            <input type="text" id="username" placeholder=" " required minlength="4">
+            <label for="username">Username (min 4 chars)</label>
+            <div class="helper-text">Username too short</div>
+        </div>
+        <div class="input-box">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">Email Address</label>
+            <div class="helper-text">Enter a valid email address</div>
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" placeholder=" " required pattern=".{8,}">
+            <label for="password">Password (min 8 chars)</label>
+            <div class="helper-text">Password must be at least 8 characters</div>
+        </div>
+    </div>
+</body>
+</html>
