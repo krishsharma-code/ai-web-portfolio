@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5: Portfolio Hero Animated</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--white);
+            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            overflow: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 64px;
+            margin: 0;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #888;
+            margin: 25px 0 40px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.1s;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: black;
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Floating Element */
+        .visual-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .floating-cube {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.4);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            animation: float 6s infinite ease-in-out, rotate3d 10s infinite linear;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary);
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .orb-1 { width: 300px; height: 300px; top: 10%; right: 10%; }
+        .orb-2 { width: 400px; height: 400px; bottom: 10%; left: 5%; background: var(--secondary); }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes rotate3d {
+            from { transform: rotateY(0deg) rotateX(0deg); }
+            to { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; justify-content: center; }
+            .hero-content h1 { font-size: 48px; }
+            .visual-container { margin-top: 50px; width: 300px; height: 300px; }
+            .floating-cube { width: 150px; height: 150px; margin-top: -75px; margin-left: -75px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Building the <span>Future of Web</span> & Gaming.</h1>
+            <p>Specializing in high-performance digital experiences, immersive game interfaces, and cutting-edge web infrastructure for the next generation of gamers.</p>
+            <div class="cta-group">
+                <a href="#" class="btn btn-primary">View Projects</a>
+                <a href="#" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+
+        <div class="visual-container">
+            <div class="floating-cube"></div>
+        </div>
+    </section>
+</body>
+</html>
