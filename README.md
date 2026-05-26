@@ -59,6 +59,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_css_transitions_hover.html**: Adding fluid animations and depth with 3D transforms and shadows.
 - **10_full_responsive_landing.html**: A complete, mobile-ready landing page combining all Grid and Media Query concepts.
 
+### Day 5: CSS Animations & Forms (`Day_05_Animations_Forms/`)
+- **01_css_keyframes_intro.html**: Understanding `@keyframes` and complex multi-stage animations.
+- **02_button_hover_effects.html**: Creating professional, interactive UI elements with transitions and glow effects.
+- **03_loading_spinners.html**: Building pure CSS performance-focused loading indicators.
+- **04_styled_contact_form.html**: Modern, accessible form layouts using Flexbox and Grid.
+- **05_input_focus_states.html**: Enhancing UX with `:focus`, `:valid`, and `:invalid` pseudo-classes.
+- **06_glassmorphism_login.html**: Implementation of the modern "frosted glass" aesthetic for UI cards.
+- **07_dark_mode_toggle_ui.html**: Building a theme-switcher component with smooth CSS variable transitions.
+- **08_studio_recruitment_form.html**: A themed, high-fidelity application form for VS Gaming Studio.
+- **09_animated_progress_bar.html**: Visualizing data with animated fills and shine overlays.
+- **10_portfolio_hero_animated.html**: A high-impact hero section with entry animations and floating 3D elements.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
