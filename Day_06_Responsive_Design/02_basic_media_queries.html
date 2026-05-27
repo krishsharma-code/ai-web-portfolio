@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Media Queries - AI Studio</title>
+    <style>
+        :root {
+            --bg-mobile: #0a0a0a;
+            --bg-tablet: #1a0033;
+            --bg-desktop: #001a1a;
+            --neon-purple: #bc13fe;
+            --neon-cyan: #00f3ff;
+            --text: #ffffff;
+        }
+        body {
+            transition: background-color 0.5s ease;
+            color: var(--text);
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .status {
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 2rem;
+            text-transform: uppercase;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* Mobile First Default */
+        body { background-color: var(--bg-mobile); }
+        .status::after { content: "Mobile View"; }
+        .status { border: 2px solid white; }
+
+        /* Tablet Breakpoint */
+        @media (min-width: 600px) {
+            body { background-color: var(--bg-tablet); }
+            .status::after { content: "Tablet View"; }
+            .status { border: 2px solid var(--neon-purple); box-shadow: 0 0 20px var(--neon-purple); }
+        }
+
+        /* Desktop Breakpoint */
+        @media (min-width: 1024px) {
+            body { background-color: var(--bg-desktop); }
+            .status::after { content: "Desktop View"; }
+            .status { border: 2px solid var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan); }
+        }
+    </style>
+</head>
+<body>
+    <div class="status"></div>
+    <p>Resize your browser to see the background color and status change.</p>
+</body>
+</html>
