@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Contact - AI Studio</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --neon-purple: #9d00ff;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .contact-card {
+            background: #111;
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            border-right: 5px solid var(--neon-purple);
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.8);
+        }
+        h2 { color: var(--neon-purple); margin-bottom: 30px; }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        label { margin-bottom: 8px; color: #888; }
+        input, textarea {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 12px;
+            color: white;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus { border-color: var(--neon-purple); }
+
+        button {
+            background: var(--neon-purple);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            box-shadow: 0 0 20px var(--neon-purple);
+            transform: scale(1.02);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .contact-card { padding: 25px; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-card">
+        <h2>CONTACT THE HUB</h2>
+        <form>
+            <div class="form-group">
+                <label>System Name</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label>Neural Link (Email)</label>
+                <input type="email" placeholder="email@nexus.com">
+            </div>
+            <div class="form-group">
+                <label>Transmission</label>
+                <textarea rows="5" placeholder="Your message..."></textarea>
+            </div>
+            <button type="submit">SEND SIGNAL</button>
+        </form>
+    </div>
+</body>
+</html>
