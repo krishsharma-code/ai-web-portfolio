@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- The Viewport Meta Tag: Essential for Responsive Web Design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewport Meta Tag - AI Studio</title>
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --neon-cyan: #00f3ff;
+            --text-main: #e0e0e0;
+        }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            border-radius: 12px;
+        }
+        h1 { color: var(--neon-cyan); }
+        code { background: #222; padding: 4px 8px; border-radius: 4px; color: var(--neon-cyan); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Viewport Meta Tag</h1>
+        <p>This tag ensures that the browser renders the page at the width of the device's screen and sets the initial zoom level.</p>
+        <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+        <p>Without this tag, mobile browsers might simulate a desktop width (usually 980px), making everything look tiny.</p>
+    </div>
+</body>
+</html>
