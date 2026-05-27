@@ -69,7 +69,19 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **07_dark_mode_toggle_ui.html**: Building a theme-switcher component with smooth CSS variable transitions.
 - **08_studio_recruitment_form.html**: A themed, high-fidelity application form for VS Gaming Studio.
 - **09_animated_progress_bar.html**: Visualizing data with animated fills and shine overlays.
-- **10_portfolio_hero_animated.html**: A high-impact hero section with entry animations and floating 3D elements.
+- **portfolio_hero_animated.html**: A high-impact hero section with entry animations and floating 3D elements.
+
+### Day 6: Responsive Web Design & Mobile-First (`Day_06_Responsive_Design/`)
+- **01_viewport_meta_tag.html**: Understanding the critical foundation for mobile-responsive scaling.
+- **02_basic_media_queries.html**: Implementing breakpoints for adaptive backgrounds and layouts.
+- **03_mobile_first_grid.html**: Designing 1-column mobile layouts that expand to 3-columns on desktop.
+- **04_responsive_typography.html**: Mastering fluid text scaling using `clamp()` and viewport units.
+- **05_hamburger_menu_css_only.html**: Building a functional mobile navigation using the "Checkbox Hack".
+- **06_responsive_images.html**: Art direction with the `<picture>` element and responsive `max-width`.
+- **07_card_layout_flex_wrap.html**: Creating self-stacking flexbox cards for dynamic content.
+- **08_studio_team_roster.html**: A responsive 7-member grid with auto-fit and minmax() properties.
+- **09_youtube_video_embed_responsive.html**: Implementing the aspect-ratio hack for perfectly scaled video iframes.
+- **10_portfolio_contact_responsive.html**: A fully adaptive contact form with mobile-optimized spacing.
 
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
