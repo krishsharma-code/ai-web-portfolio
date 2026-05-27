@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile-First Grid - AI Studio</title>
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --neon-lime: #39ff14;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+        }
+        h1 { text-align: center; color: var(--neon-lime); }
+
+        .grid-container {
+            display: grid;
+            gap: 20px;
+            /* Mobile First: 1 column */
+            grid-template-columns: 1fr;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Desktop: 3 columns */
+        @media (min-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-bottom: 3px solid var(--neon-lime);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-10px); }
+    </style>
+</head>
+<body>
+    <h1>Adaptive AI Grid</h1>
+    <div class="grid-container">
+        <div class="card"><h3>Neural Core</h3><p>Optimized for mobile single-column efficiency.</p></div>
+        <div class="card"><h3>Data Stream</h3><p>Expands to 3 columns on desktop screens.</p></div>
+        <div class="card"><h3>Logic Engine</h3><p>Seamlessly transitioning layouts.</p></div>
+        <div class="card"><h3>Quantum Link</h3><p>Responsive design at its core.</p></div>
+        <div class="card"><h3>Bio Sync</h3><p>Built with CSS Grid Repeat.</p></div>
+        <div class="card"><h3>Cyber Shell</h3><p>Mobile-first strategy applied.</p></div>
+    </div>
+</body>
+</html>
