@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Layout Flex Wrap - AI Studio</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --neon-green: #00ff41;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 40px 20px;
+        }
+        h1 { text-align: center; color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap; /* CRITICAL for responsiveness */
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            flex: 1 1 300px; /* grow, shrink, basis */
+            background: #151515;
+            padding: 25px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .card:hover { border-color: var(--neon-green); }
+        .card h3 { color: var(--neon-green); }
+    </style>
+</head>
+<body>
+    <h1>SYSTEM MODULES</h1>
+    <div class="flex-container">
+        <div class="card"><h3>Module 01</h3><p>Flex-wrap allows these cards to automatically stack when the screen is too narrow.</p></div>
+        <div class="card"><h3>Module 02</h3><p>Using flex-basis of 300px ensures a minimum readable width for each component.</p></div>
+        <div class="card"><h3>Module 03</h3><p>Perfect for dashboards and project listings in our AI studio.</p></div>
+        <div class="card"><h3>Module 04</h3><p>Scalable, maintainable, and highly responsive without complex grids.</p></div>
+    </div>
+</body>
+</html>
