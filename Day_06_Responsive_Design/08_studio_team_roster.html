@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Team Roster - AI Studio</title>
+    <style>
+        :root {
+            --bg: #020202;
+            --neon-red: #ff3131;
+        }
+        body {
+            background-color: var(--bg);
+            color: #eee;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { color: var(--neon-red); letter-spacing: 5px; }
+
+        .team-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .member-card {
+            background: #111;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #222;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        .member-card:hover {
+            transform: scale(1.05);
+            border-color: var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 49, 49, 0.3);
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--neon-red);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>VS GAMING STUDIO</h1>
+        <p>ELITE DEVELOPMENT TEAM</p>
+    </div>
+    
+    <div class="team-grid">
+        <div class="member-card"><div class="avatar">KS</div><h3>Krish Sharma</h3><p>Lead Architect</p></div>
+        <div class="member-card"><div class="avatar">AN</div><h3>Alex Nova</h3><p>AI Specialist</p></div>
+        <div class="member-card"><div class="avatar">ZR</div><h3>Zane Rex</h3><p>Game Designer</p></div>
+        <div class="member-card"><div class="avatar">LY</div><h3>Luna Sky</h3><p>UI/UX Lead</p></div>
+        <div class="member-card"><div class="avatar">MD</div><h3>Max Drift</h3><p>Engine Developer</p></div>
+        <div class="member-card"><div class="avatar">SV</div><h3>Sara Vox</h3><p>Sound Engineer</p></div>
+        <div class="member-card"><div class="avatar">OC</div><h3>Orbital C.</h3><p>DevOps Hero</p></div>
+    </div>
+</body>
+</html>
