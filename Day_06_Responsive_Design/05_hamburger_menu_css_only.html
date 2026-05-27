@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-Only Hamburger Menu - AI Studio</title>
+    <style>
+        :root {
+            --bg: #080808;
+            --neon-pink: #ff00ff;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        nav {
+            background: #111;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--neon-pink);
+        }
+        .logo { font-weight: bold; color: var(--neon-pink); font-size: 1.5rem; }
+
+        /* Hamburger Icon (CSS Only) */
+        .menu-toggle { display: none; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+        .nav-links a { text-decoration: none; color: white; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--neon-pink); }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                padding: 20px;
+                box-sizing: border-box;
+                border-bottom: 1px solid #333;
+            }
+            /* The Magic: Checkbox Hack */
+            .menu-toggle:checked ~ .nav-links {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AI.STUDIO</div>
+        
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">AI Models</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div style="padding: 40px; text-align: center;">
+        <h2>Mobile Navigation</h2>
+        <p>This menu uses the "Checkbox Hack" to toggle visibility on mobile without any JavaScript.</p>
+    </div>
+</body>
+</html>
