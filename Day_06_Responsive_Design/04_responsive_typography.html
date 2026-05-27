@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Typography - AI Studio</title>
+    <style>
+        :root {
+            --bg: #000;
+            --neon-blue: #0070f3;
+        }
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        /* Using clamp for fluid typography */
+        /* clamp(MIN, PREFERRED, MAX) */
+        h1 {
+            font-size: clamp(2rem, 8vw, 5rem);
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            max-width: 800px;
+            line-height: 1.6;
+            color: #888;
+            text-align: center;
+        }
+
+        .sub-text {
+            font-size: 1.2rem; /* Static rem fallback */
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>FLUID TYPOGRAPHY</h1>
+    <p>Using the CSS <code>clamp()</code> function, this text scales smoothly based on the viewport width without needing dozens of media queries.</p>
+    <div class="sub-text">Resize the window to see the magic.</div>
+</body>
+</html>
