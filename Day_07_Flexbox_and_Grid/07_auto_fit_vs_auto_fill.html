@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Fit vs Auto-Fill | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #010409;
+            --accent-fit: #39ff14; /* Neon Green */
+            --accent-fill: #ff0055; /* Cyber Pink */
+            --box-bg: #161b22;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #e6edf3;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        h1 { text-align: center; margin-bottom: 3rem; text-transform: uppercase; }
+
+        section {
+            margin-bottom: 4rem;
+            border: 1px solid #30363d;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        h2 { margin-top: 0; }
+        .fit-h2 { color: var(--accent-fit); }
+        .fill-h2 { color: var(--accent-fill); }
+
+        .grid {
+            display: grid;
+            gap: 15px;
+            border: 2px dashed #444;
+            padding: 10px;
+            margin-top: 1rem;
+        }
+
+        /* The Core Comparison */
+        .auto-fit {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .auto-fill {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .item {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .auto-fit .item { background: var(--accent-fit); color: #000; box-shadow: 0 0 10px var(--accent-fit); }
+        .auto-fill .item { background: var(--accent-fill); color: #fff; box-shadow: 0 0 10px var(--accent-fill); }
+
+        .explanation {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #8b949e;
+            line-height: 1.5;
+        }
+
+        code { background: #000; padding: 2px 5px; border-radius: 3px; color: #79c0ff; }
+    </style>
+</head>
+<body>
+    <h1>Responsive Grid Logic</h1>
+
+    <section>
+        <h2 class="fit-h2">repeat(auto-fit, minmax(150px, 1fr))</h2>
+        <p>Auto-fit expands items to fill the remaining space in the row.</p>
+        <div class="grid auto-fit">
+            <div class="item">FIT 1</div>
+            <div class="item">FIT 2</div>
+            <div class="item">FIT 3</div>
+        </div>
+        <div class="explanation">
+            <code>auto-fit</code> will stretch the items to fill the entire width of the container if there is extra space.
+        </div>
+    </section>
+
+    <section>
+        <h2 class="fill-h2">repeat(auto-fill, minmax(150px, 1fr))</h2>
+        <p>Auto-fill reserves space for empty tracks even if they aren't filled.</p>
+        <div class="grid auto-fill">
+            <div class="item">FILL 1</div>
+            <div class="item">FILL 2</div>
+            <div class="item">FILL 3</div>
+        </div>
+        <div class="explanation">
+            <code>auto-fill</code> will create as many tracks as possible, even if they are empty, rather than stretching the existing items to fill the row.
+        </div>
+    </section>
+</body>
+</html>
