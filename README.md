@@ -83,6 +83,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_youtube_video_embed_responsive.html**: Implementing the aspect-ratio hack for perfectly scaled video iframes.
 - **10_portfolio_contact_responsive.html**: A fully adaptive contact form with mobile-optimized spacing.
 
+### Day 7: CSS Flexbox & Grid Architecture (`Day_07_Flexbox_and_Grid/`)
+- **01_flexbox_align_justify.html**: Mastering `align-items` and `justify-content` for precise centering.
+- **02_flex_grow_shrink.html**: Dynamic item sizing using growth and shrinkage logic.
+- **03_css_grid_basics.html**: Foundation of 2D layouts with columns, rows, and gaps.
+- **04_grid_areas.html**: Advanced semantic structuring using named `grid-template-areas`.
+- **05_holy_grail_layout.html**: Implementing the classic industry-standard layout with Header, Footer, and Sidebars.
+- **06_masonry_layout_mimic.html**: A Pinterest-style dynamic gallery using variable row spanning.
+- **07_auto_fit_vs_auto_fill.html**: Understanding the nuances of responsive track behavior in `repeat()`.
+- **08_studio_game_showcase.html**: A high-fidelity gaming dashboard using card-based Grid design.
+- **09_youtube_video_dashboard.html**: Hybrid architecture combining a Flex sidebar with a Grid video feed.
+- **10_cybersecurity_tools_panel.html**: Complex nested Grids for data-heavy hacker interfaces.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
