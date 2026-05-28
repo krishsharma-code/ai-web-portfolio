@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Gaming Studio Showcase | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #ff00ff; /* Neon Magenta */
+            --card-bg: #111;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Arial Black', sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            letter-spacing: 5px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 250px;
+        }
+
+        .game-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.2);
+        }
+
+        .game-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-title {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin: 0;
+        }
+
+        .game-genre {
+            font-family: monospace;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .game-desc {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            color: #ccc;
+        }
+
+        .btn-play {
+            margin-top: auto;
+            align-self: flex-start;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-play:hover {
+            background: var(--accent);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VS GAMING STUDIO</h1>
+    </header>
+
+    <div class="game-grid">
+        <div class="game-card">
+            <div>
+                <h2 class="game-title">CYBERPULSE</h2>
+                <div class="game-genre">FPS / Action</div>
+                <p class="game-desc">A fast-paced neon shooter set in a collapsing digital reality.</p>
+            </div>
+            <button class="btn-play">Launch Protocol</button>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2 class="game-title">SHADOW MESH</h2>
+                <div class="game-genre">Stealth / RPG</div>
+                <p class="game-desc">Infiltrate the high-security servers of the Global Conglomerate.</p>
+            </div>
+            <button class="btn-play">Launch Protocol</button>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2 class="game-title">VOID RUNNER</h2>
+                <div class="game-genre">Racing / Arcade</div>
+                <p class="game-desc">Survive the infinite void in the fastest ships ever built.</p>
+            </div>
+            <button class="btn-play">Launch Protocol</button>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <h2 class="game-title">KERNEL WAR</h2>
+                <div class="game-genre">Strategy / RTS</div>
+                <p class="game-desc">Command armies of rogue AI to conquer the network.</p>
+            </div>
+            <button class="btn-play">Launch Protocol</button>
+        </div>
+    </div>
+</body>
+</html>
