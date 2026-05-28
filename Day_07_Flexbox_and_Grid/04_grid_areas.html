@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid: Named Areas | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --hacker-green: #00ff41;
+            --sidebar-bg: #111;
+            --main-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .dashboard {
+            display: grid;
+            height: 90vh;
+            grid-template-columns: 250px 1fr 200px;
+            grid-template-rows: 80px 1fr 60px;
+            gap: 10px;
+            grid-template-areas: 
+                "nav head head"
+                "nav main aside"
+                "nav foot foot";
+        }
+
+        .dashboard > div {
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .nav { grid-area: nav; background: var(--sidebar-bg); border-color: var(--hacker-green) !important; color: var(--hacker-green); }
+        .head { grid-area: head; background: #222; }
+        .main { grid-area: main; background: var(--main-bg); }
+        .aside { grid-area: aside; background: #121212; font-size: 0.8rem; }
+        .foot { grid-area: foot; background: #080808; }
+
+        .tag {
+            background: #000;
+            border: 1px solid var(--hacker-green);
+            padding: 5px 10px;
+            box-shadow: 0 0 5px var(--hacker-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="nav">
+            <span class="tag">Navigation</span>
+        </div>
+        <div class="head">System Header</div>
+        <div class="main">Main Core Processor</div>
+        <div class="aside">System Stats</div>
+        <div class="foot">Footer Status: Online</div>
+    </div>
+</body>
+</html>
