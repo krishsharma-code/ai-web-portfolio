@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Tools Panel | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #000;
+            --hacker-green: #00ff00;
+            --grid-border: #003300;
+            --panel-bg: #050505;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--hacker-green);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 10px;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            height: 98vh;
+            gap: 10px;
+        }
+
+        header {
+            border: 1px solid var(--hacker-green);
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: var(--panel-bg);
+        }
+
+        .main-dashboard {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 10px;
+        }
+
+        .panel {
+            border: 1px solid var(--grid-border);
+            background: var(--panel-bg);
+            padding: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-title {
+            border-bottom: 1px solid var(--grid-border);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            font-size: 0.8rem;
+            color: #008800;
+        }
+
+        /* Nested Grid for Tools */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .tool-item {
+            border: 1px solid var(--grid-border);
+            padding: 10px;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #080808;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .tool-item:hover {
+            border-color: var(--hacker-green);
+            background: #001100;
+            box-shadow: inset 0 0 10px var(--hacker-green);
+        }
+
+        /* Center Data Visualization */
+        .visualizer {
+            display: grid;
+            grid-template-rows: 2fr 1fr;
+            gap: 10px;
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            gap: 2px;
+            border: 1px solid var(--grid-border);
+        }
+
+        .node {
+            background: #001100;
+            border: 1px solid #000a00;
+        }
+
+        .node.active {
+            background: var(--hacker-green);
+            box-shadow: 0 0 5px var(--hacker-green);
+        }
+
+        .log-panel {
+            font-size: 0.7rem;
+            color: #00aa00;
+            line-height: 1.2;
+            overflow-y: auto;
+        }
+
+        .scan-line {
+            height: 2px;
+            background: var(--hacker-green);
+            opacity: 0.3;
+            width: 100%;
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            from { top: 0; }
+            to { top: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>Network Security Command Center [V.2.0.4]</header>
+
+    <div class="main-dashboard">
+        <!-- Left Panel: Tools -->
+        <div class="panel">
+            <div class="panel-title">Infiltration Modules</div>
+            <div class="tools-grid">
+                <div class="tool-item">Port Scanner</div>
+                <div class="tool-item">Packet Sniffer</div>
+                <div class="tool-item">Brute Force</div>
+                <div class="tool-item">SQL Inject</div>
+                <div class="tool-item">XSS Exploit</div>
+                <div class="tool-item">Social Eng</div>
+            </div>
+        </div>
+
+        <!-- Center Panel: Map & Logs -->
+        <div class="visualizer">
+            <div class="panel" style="position: relative;">
+                <div class="panel-title">Global Node Traffic</div>
+                <div class="scan-line"></div>
+                <div class="map-grid">
+                    <!-- Simulating nodes -->
+                    <div class="node active"></div> <div class="node"></div> <div class="node"></div> <div class="node active"></div>
+                    <div class="node"></div> <div class="node"></div> <div class="node active"></div> <div class="node"></div>
+                    <div class="node active"></div> <div class="node active"></div> <div class="node"></div> <div class="node"></div>
+                    <!-- ... repeated node divs ... -->
+                    <script>
+                        for(let i=0; i<188; i++) {
+                            document.write('<div class="node' + (Math.random() > 0.9 ? ' active' : '') + '"></div>');
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-title">System Logs</div>
+                <div class="log-panel">
+                    [INFO] Connection established to 192.168.1.104<br>
+                    [WARN] Unauthorized access attempt detected from 10.0.0.5<br>
+                    [INFO] Encryption key rotated<br>
+                    [CRIT] Firewall breach detected in sector 7G<br>
+                    [INFO] Trace route completed in 45ms<br>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Status -->
+        <div class="panel">
+            <div class="panel-title">System Integrity</div>
+            <div style="font-size: 2rem; text-align: center; margin: 20px 0;">94%</div>
+            <div class="panel-title">Active Traces</div>
+            <div class="log-panel">
+                USER_ADMIN: ACTIVE<br>
+                GUEST_04: DISCONNECTED<br>
+                ROOT: SECURED
+            </div>
+        </div>
+    </div>
+</body>
+</html>
