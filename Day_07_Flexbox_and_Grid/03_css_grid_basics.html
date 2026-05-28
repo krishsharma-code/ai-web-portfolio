@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid: Basics | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --cyber-blue: #00e5ff;
+            --panel-bg: #161b22;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #c9d1d9;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            border-bottom: 2px solid var(--cyber-blue);
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .grid-container {
+            display: grid;
+            /* 3 equal columns, 2 rows */
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 150px 150px;
+            gap: 20px;
+            max-width: 900px;
+        }
+
+        .grid-item {
+            background-color: var(--panel-bg);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cyber-blue);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .grid-item:hover {
+            border-color: var(--cyber-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--cyber-blue);
+        }
+
+        .info {
+            margin-top: 3rem;
+            background: #0d1117;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--cyber-blue);
+        }
+
+        code { color: #ff7b72; }
+    </style>
+</head>
+<body>
+    <h1>Grid Architecture</h1>
+
+    <div class="grid-container">
+        <div class="grid-item">01</div>
+        <div class="grid-item">02</div>
+        <div class="grid-item">03</div>
+        <div class="grid-item">04</div>
+        <div class="grid-item">05</div>
+        <div class="grid-item">06</div>
+    </div>
+
+    <div class="info">
+        <p>This layout uses <code>display: grid;</code> with <code>grid-template-columns: repeat(3, 1fr);</code> to create three equal-width columns. The <code>gap</code> property defines the spacing between cells.</p>
+    </div>
+</body>
+</html>
