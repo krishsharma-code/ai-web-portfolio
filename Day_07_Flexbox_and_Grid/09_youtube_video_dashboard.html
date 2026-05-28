@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise and Shine Video Dashboard | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --sidebar-bg: #1a1a1a;
+            --main-bg: #050505;
+            --accent: #ff4500; /* Sunset Orange */
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            display: flex; /* Flexbox for the main layout structure */
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar using Flexbox */
+        aside {
+            flex-basis: 250px;
+            background-color: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            border-right: 1px solid #333;
+        }
+
+        .sidebar-item {
+            padding: 12px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-item:hover { background: #333; }
+        .sidebar-item.active { background: #444; color: var(--accent); font-weight: bold; }
+
+        /* Main Content using Grid */
+        main {
+            flex-grow: 1;
+            background-color: var(--main-bg);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 { color: var(--accent); margin: 0; }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .video-card:hover { transform: scale(1.03); }
+
+        .thumbnail {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(45deg, #222, #333);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .video-meta {
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="sidebar-item active">Home</div>
+        <div class="sidebar-item">Shorts</div>
+        <div class="sidebar-item">Subscriptions</div>
+        <hr style="width: 100%; border: 0.5px solid #333; margin: 1rem 0;">
+        <div class="sidebar-item">Library</div>
+        <div class="sidebar-item">History</div>
+        <div class="sidebar-item">Your Videos</div>
+    </aside>
+
+    <main>
+        <header>
+            <h1>Rise and Shine Channel</h1>
+            <div class="search-bar" style="background: #222; padding: 5px 15px; border-radius: 20px; color: #888;">Search</div>
+        </header>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="thumbnail">▶</div>
+                <div class="video-info">
+                    <span class="video-title">Day 01: Python Basics</span>
+                    <span class="video-meta">Rise and Shine • 1.2M views • 2 days ago</span>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail">▶</div>
+                <div class="video-info">
+                    <span class="video-title">The Secret of Async/Await</span>
+                    <span class="video-meta">Rise and Shine • 850K views • 5 days ago</span>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail">▶</div>
+                <div class="video-info">
+                    <span class="video-title">Building a Portfolio from Scratch</span>
+                    <span class="video-meta">Rise and Shine • 2.1M views • 1 week ago</span>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail">▶</div>
+                <div class="video-info">
+                    <span class="video-title">CSS Grid Mastery Guide</span>
+                    <span class="video-meta">Rise and Shine • 500K views • 3 hours ago</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
