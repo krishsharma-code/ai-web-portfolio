@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masonry Mimic | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #00f3ff;
+            --card-bg: #111;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--accent);
+        }
+
+        .masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-auto-rows: 10px;
+            gap: 15px;
+        }
+
+        .item {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+
+        /* Simulating masonry by spanning different row amounts */
+        .short { grid-row-end: span 15; }
+        .medium { grid-row-end: span 25; }
+        .tall { grid-row-end: span 35; }
+
+        .item-label {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .item-content {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Masonry Mimic Layout</h1>
+        <p>Dynamic CSS Grid Gallery</p>
+    </header>
+
+    <div class="masonry">
+        <div class="item short">
+            <div class="item-label">Module A1</div>
+            <div class="item-content">System diagnostics running...</div>
+        </div>
+        <div class="item tall">
+            <div class="item-label">Module B2</div>
+            <div class="item-content">Extensive data analysis in progress. High priority task.</div>
+        </div>
+        <div class="item medium">
+            <div class="item-label">Module C3</div>
+            <div class="item-content">User profile sync active.</div>
+        </div>
+        <div class="item tall">
+            <div class="item-label">Module D4</div>
+            <div class="item-content">Legacy system integration test. Processing heavy load.</div>
+        </div>
+        <div class="item short">
+            <div class="item-label">Module E5</div>
+            <div class="item-content">Quick patch applied.</div>
+        </div>
+        <div class="item medium">
+            <div class="item-label">Module F6</div>
+            <div class="item-content">Database re-indexing phase 1.</div>
+        </div>
+        <div class="item tall">
+            <div class="item-label">Module G7</div>
+            <div class="item-content">Advanced security protocol deployment.</div>
+        </div>
+        <div class="item short">
+            <div class="item-label">Module H8</div>
+            <div class="item-content">Ping stable.</div>
+        </div>
+    </div>
+</body>
+</html>
