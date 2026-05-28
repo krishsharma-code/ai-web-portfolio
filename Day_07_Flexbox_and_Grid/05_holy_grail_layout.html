@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout | Cyber-Portfolio</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --header-bg: #161b22;
+            --footer-bg: #010409;
+            --accent: #bc13fe; /* Purple Neon */
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #c9d1d9;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            grid-template-rows: 80px 1fr 60px;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            grid-column: 1 / -1; /* Span all columns */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(188, 19, 254, 0.3);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            border-top: 1px solid #30363d;
+            font-size: 0.8rem;
+        }
+
+        nav, aside {
+            background-color: #0d1117;
+            border-right: 1px solid #30363d;
+            padding: 1rem;
+        }
+
+        aside {
+            border-right: none;
+            border-left: 1px solid #30363d;
+        }
+
+        main {
+            background-color: #0d1117;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .content-box {
+            background: #161b22;
+            border: 1px solid #30363d;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        h2 { color: var(--accent); margin-top: 0; }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px auto auto auto 60px;
+            }
+            header, footer, nav, main, aside {
+                grid-column: 1;
+            }
+            nav, aside { border: none; border-bottom: 1px solid #30363d; }
+        }
+    </style>
+</head>
+<body>
+    <header>Network Core Header</header>
+    <nav>
+        <h3>Links</h3>
+        <p>Dashboard</p>
+        <p>Telemetry</p>
+    </nav>
+    <main>
+        <h2>Main Processing Unit</h2>
+        <div class="content-box">
+            Data Stream A: Stable
+        </div>
+        <div class="content-box">
+            Data Stream B: Encrypted
+        </div>
+    </main>
+    <aside>
+        <h3>Metrics</h3>
+        <p>CPU: 12%</p>
+        <p>RAM: 45%</p>
+    </aside>
+    <footer>Session ID: 0x4F2A - End of Line</footer>
+</body>
+</html>
