@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: Interactive Subscribe Button</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Roboto, Arial, sans-serif;
+        }
+
+        .subscribe-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #272727;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .subscribe-container:hover {
+            background: #3f3f3f;
+        }
+
+        .btn-subscribe {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.1s, background 0.2s;
+        }
+
+        .btn-subscribe.subscribed {
+            background: #3f3f3f;
+            color: #aaa;
+        }
+
+        .btn-subscribe:active {
+            transform: scale(0.95);
+        }
+
+        .bell-icon {
+            font-size: 1.5rem;
+            color: #aaa;
+            transition: color 0.2s;
+        }
+
+        .bell-icon.active {
+            color: white;
+            animation: ring 0.5s ease-in-out;
+        }
+
+        @keyframes ring {
+            0% { transform: rotate(0); }
+            10% { transform: rotate(15deg); }
+            20% { transform: rotate(-15deg); }
+            30% { transform: rotate(15deg); }
+            40% { transform: rotate(-15deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(-10deg); }
+            70% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0); }
+        }
+
+        .channel-info {
+            color: white;
+            margin-right: 20px;
+        }
+
+        .channel-name { font-weight: bold; }
+        .subs-count { font-size: 0.8rem; color: #aaa; }
+    </style>
+</head>
+<body>
+    <div class="channel-info">
+        <div class="channel-name">Rise and Shine</div>
+        <div class="subs-count">1.2M subscribers</div>
+    </div>
+
+    <div class="subscribe-container" onclick="toggleSub()">
+        <button id="subBtn" class="btn-subscribe">SUBSCRIBE</button>
+        <div id="bell" class="bell-icon">🔔</div>
+    </div>
+
+    <script>
+        function toggleSub() {
+            const btn = document.getElementById('subBtn');
+            const bell = document.getElementById('bell');
+            
+            if (btn.innerText === 'SUBSCRIBE') {
+                btn.innerText = 'SUBSCRIBED';
+                btn.classList.add('subscribed');
+                bell.classList.add('active');
+            } else {
+                btn.innerText = 'SUBSCRIBE';
+                btn.classList.remove('subscribed');
+                bell.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
