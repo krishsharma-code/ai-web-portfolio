@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: Parallax Scrolling Lite</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: #050505;
+        }
+
+        .parallax-wrapper {
+            perspective: 10px;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .parallax-group {
+            position: relative;
+            height: 100vh;
+            transform-style: preserve-3d;
+        }
+
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+        }
+
+        .background {
+            transform: translateZ(-10px) scale(2.1);
+            background: linear-gradient(45deg, #121212, #1a1a1a);
+            z-index: 1;
+        }
+
+        .midground {
+            transform: translateZ(-5px) scale(1.6);
+            color: rgba(0, 255, 204, 0.2);
+            z-index: 2;
+        }
+
+        .foreground {
+            transform: translateZ(0);
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+        }
+
+        .content-section {
+            height: 100vh;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00ffcc;
+            font-family: sans-serif;
+            font-size: 2rem;
+            z-index: 4;
+            position: relative;
+        }
+
+        .stars {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: white;
+            box-shadow: 100px 200px white, 300px 500px white, 800px 100px white, 200px 800px white;
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax-wrapper">
+        <div class="parallax-group">
+            <div class="layer background">
+                <div class="stars"></div>
+                DEPTH
+            </div>
+            <div class="layer midground">PARALLAX</div>
+            <div class="layer foreground">CSS ONLY</div>
+        </div>
+        <div class="content-section">
+            <p>Keep scrolling to feel the depth.</p>
+        </div>
+        <div class="parallax-group">
+            <div class="layer background" style="background: linear-gradient(135deg, #0f172a, #1e293b);"></div>
+            <div class="layer foreground">MOTION</div>
+        </div>
+    </div>
+</body>
+</html>
