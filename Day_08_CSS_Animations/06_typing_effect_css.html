@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: Typing Effect CSS</title>
+    <style>
+        :root {
+            --bg-color: #000;
+            --text-color: #0f0;
+            --cursor-color: #0f0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .typing-container {
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .typing-text {
+            overflow: hidden; /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid var(--cursor-color); /* The typwriter cursor */
+            white-space: nowrap; /* Keeps the content on a single line */
+            margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em; /* Adjust as needed */
+            width: 0;
+            animation: 
+                typing 3.5s steps(40, end) forwards,
+                blink-caret .75s step-end infinite;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--cursor-color); }
+        }
+
+        .sub-text {
+            color: #555;
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 4s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="typing-container">
+            <h1 class="typing-text">Initializing System...</h1>
+        </div>
+        <p class="sub-text">> Access Granted. Welcome to Day 8.</p>
+    </div>
+</body>
+</html>
