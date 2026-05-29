@@ -95,6 +95,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_youtube_video_dashboard.html**: Hybrid architecture combining a Flex sidebar with a Grid video feed.
 - **10_cybersecurity_tools_panel.html**: Complex nested Grids for data-heavy hacker interfaces.
 
+### Day 8: CSS Animations & UI Micro-interactions (`Day_08_CSS_Animations/`)
+- **01_hover_transitions.html**: Smooth background, color, and transform changes on hover.
+- **02_keyframes_basics.html**: Creating custom multi-stage animations using `@keyframes`.
+- **03_loading_spinners.html**: Building 3 different pure CSS high-performance loading animations.
+- **04_bouncing_elements.html**: Mastering timing functions like `ease-in-out` and `cubic-bezier`.
+- **05_parallax_scrolling_lite.html**: Creating a simple depth effect on scroll using 3D transforms.
+- **06_typing_effect_css.html**: A retro console typing animation using `steps()` and `overflow`.
+- **07_glassmorphism_cards.html**: Frosted glass UI elements with backdrop filters and floating motion.
+- **08_vs_studio_splash_screen.html**: A dramatic, fading-in animated logo screen for 'VS Gaming Studio'.
+- **09_youtube_subscribe_button.html**: Highly interactive subscribe button with a bell ringing animation.
+- **10_cyber_glitch_text.html**: A hacker-style neon glitch effect on text using multiple shadows.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
