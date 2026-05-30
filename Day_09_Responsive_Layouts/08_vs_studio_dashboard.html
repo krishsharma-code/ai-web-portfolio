@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Studio Dashboard | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --sidebar: #161b22;
+            --accent: #58a6ff;
+            --card: #21262d;
+            --success: #238636;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        aside {
+            background: var(--sidebar);
+            padding: 20px;
+            border-right: 1px solid #30363d;
+        }
+
+        .profile { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+        .avatar { width: 40px; height: 40px; background: var(--accent); border-radius: 50%; }
+
+        /* Main Dashboard */
+        main {
+            padding: 30px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 150px 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-card h4 { margin: 0; color: #8b949e; }
+        .stat-card .value { font-size: 2rem; font-weight: bold; color: white; }
+
+        .project-grid {
+            grid-column: 1 / span 3;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .project-card {
+            background: var(--card);
+            padding: 20px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+        }
+
+        .status-tag {
+            background: var(--success);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 1024px) {
+            body { grid-template-columns: 1fr; }
+            aside { display: none; }
+            main { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .project-grid { grid-column: 1; }
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="profile">
+            <div class="avatar"></div>
+            <div><strong>Krish Sharma</strong><br><small>Lead Developer</small></div>
+        </div>
+        <ul style="list-style: none; padding: 0; line-height: 2.5;">
+            <li>🏠 Overview</li>
+            <li>📂 Repositories</li>
+            <li>🚀 Deployments</li>
+            <li>⚙️ Settings</li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="stat-card"><h4>Active Projects</h4><div class="value">14</div></div>
+        <div class="stat-card"><h4>Total Commits</h4><div class="value">1,204</div></div>
+        <div class="stat-card"><h4>Server Uptime</h4><div class="value">99.9%</div></div>
+
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>VS-Studio-Engine</h3>
+                <p>Core game engine built with C++ and Vulkan API integration.</p>
+                <span class="status-tag">Active</span>
+            </div>
+            <div class="project-card">
+                <h3>AI-Persona-Mod</h3>
+                <p>Large language model wrapper for dynamic NPC dialogue.</p>
+                <span class="status-tag">Beta</span>
+            </div>
+            <div class="project-card">
+                <h3>Cyber-Dash-UI</h3>
+                <p>Responsive dashboard layout for project management.</p>
+                <span class="status-tag">Stable</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
