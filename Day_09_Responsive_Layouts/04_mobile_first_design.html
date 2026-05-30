@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile First Design | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --primary: #00ff88;
+            --card: #111;
+        }
+
+        body {
+            background: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Mobile First: Single Column Stack */
+        .layout {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        h1 { color: var(--primary); font-size: 1.5rem; }
+
+        /* Desktop Enhancement */
+        @media (min-width: 768px) {
+            .layout {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .section {
+                flex: 1 1 calc(50% - 20px);
+            }
+            h1 { font-size: 2.5rem; }
+        }
+
+        @media (min-width: 1024px) {
+            .section {
+                flex: 1 1 calc(33.33% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mobile-First Strategy</h1>
+        <p>This layout starts as a stack and expands into columns as screen width increases.</p>
+        
+        <div class="layout">
+            <div class="section">
+                <h3>Core Node</h3>
+                <p>Initial mobile data processing unit. Scalable and efficient.</p>
+            </div>
+            <div class="section">
+                <h3>Cloud Bridge</h3>
+                <p>Syncing mobile assets to high-bandwidth desktop servers.</p>
+            </div>
+            <div class="section">
+                <h3>Edge Logic</h3>
+                <p>Distributed computing across all viewport breakpoints.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
