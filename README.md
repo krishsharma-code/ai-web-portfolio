@@ -107,6 +107,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_youtube_subscribe_button.html**: Highly interactive subscribe button with a bell ringing animation.
 - **10_cyber_glitch_text.html**: A hacker-style neon glitch effect on text using multiple shadows.
 
+### Day 9: Responsive Layouts & CSS Architecture (`Day_09_Responsive_Layouts/`)
+- **01_flexbox_row_column.html**: Mastering flex-direction, justify-content, and align-items for precise centering.
+- **02_css_grid_template.html**: Building a classic layout using `grid-template-columns` and `rows`.
+- **03_media_queries_basics.html**: Implementing dynamic background colors and typography based on screen breakpoints.
+- **04_mobile_first_design.html**: Executing a "Small-to-Large" strategy by scaling layouts from phone to desktop.
+- **05_holy_grail_layout.html**: The industry-standard Header/Footer/Sidebar architecture using named Grid areas.
+- **06_responsive_image_gallery.html**: A fluid `auto-fit` image grid that adjusts columns dynamically based on viewport width.
+- **07_navigation_bar_flex.html**: A modern navbar that transforms into a sliding mobile menu on smaller screens.
+- **08_vs_studio_dashboard.html**: A complex CSS Grid dashboard representing an AI project management interface.
+- **09_rise_and_shine_blog.html**: A Flexbox-driven motivational article feed with responsive stacked states.
+- **10_hardware_store_grid.html**: A high-fidelity responsive product display grid for high-performance PC components.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
