@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --header: #00f2ff;
+            --footer: #7000ff;
+            --sidebar: #151518;
+            --content: #1a1a1d;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #ccc;
+            font-family: system-ui;
+            height: 100vh;
+        }
+
+        .grid-parent {
+            display: grid;
+            height: 100%;
+            grid-template-areas: 
+                "header header header"
+                "nav main aside"
+                "footer footer footer";
+            grid-template-columns: 200px 1fr 200px;
+            grid-template-rows: 80px 1fr 60px;
+        }
+
+        header { grid-area: header; background: var(--header); color: black; font-weight: bold; }
+        nav { grid-area: nav; background: var(--sidebar); border-right: 1px solid #333; }
+        main { grid-area: main; background: var(--content); padding: 20px; }
+        aside { grid-area: aside; background: var(--sidebar); border-left: 1px solid #333; }
+        footer { grid-area: footer; background: var(--footer); color: white; }
+
+        .center { display: flex; justify-content: center; align-items: center; }
+
+        /* Responsive: Stack on small screens */
+        @media (max-width: 768px) {
+            .grid-parent {
+                grid-template-areas: 
+                    "header"
+                    "nav"
+                    "main"
+                    "aside"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr auto auto;
+            }
+            nav, aside { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-parent">
+        <header class="center">AI SYSTEM HEADER</header>
+        <nav class="center">NAVIGATION</nav>
+        <main>
+            <h2>Primary Core Content</h2>
+            <p>The Holy Grail layout represents the ultimate structure for complex web applications, providing dedicated spaces for navigation, content, and secondary info.</p>
+        </main>
+        <aside class="center">WIDGETS</aside>
+        <footer class="center">TERMINAL FOOTER © 2026</footer>
+    </div>
+</body>
+</html>
