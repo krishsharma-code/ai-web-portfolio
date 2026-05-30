@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Template | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --card: #151518;
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --accent: #ff00c8;
+            --text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 { color: var(--primary); text-align: center; margin-bottom: 40px; }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr;
+            grid-template-rows: 100px auto 100px;
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .item {
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            padding: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .item:hover { border-color: var(--primary); }
+
+        .header { grid-column: 1 / span 3; color: var(--primary); border-bottom: 2px solid var(--primary); }
+        .sidebar { grid-row: 2 / span 1; color: var(--secondary); }
+        .main-1 { background: rgba(0, 242, 255, 0.05); }
+        .main-2 { background: rgba(112, 0, 255, 0.05); }
+        .footer { grid-column: 1 / span 3; color: var(--accent); border-top: 2px solid var(--accent); }
+
+        code { color: var(--primary); background: #222; padding: 2px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Grid Template Structures</h1>
+
+    <div class="grid-container">
+        <div class="item header">HEADER (3 Columns Wide)</div>
+        <div class="item sidebar">SIDEBAR</div>
+        <div class="item main-1">MAIN CONTENT A</div>
+        <div class="item main-2">MAIN CONTENT B</div>
+        <div class="item footer">FOOTER (3 Columns Wide)</div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <p>Using <code>grid-template-columns: 200px 1fr 1fr;</code></p>
+    </div>
+</body>
+</html>
