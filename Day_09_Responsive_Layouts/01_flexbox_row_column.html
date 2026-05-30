@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Row & Column | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --card: #151518;
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        h1 { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        .container {
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            height: 150px;
+            border: 1px dashed var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            height: 300px;
+            border: 1px dashed var(--primary);
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 15px rgba(112, 0, 255, 0.3);
+        }
+
+        p { color: #888; font-size: 0.9rem; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Flexbox Mastering</h1>
+
+    <div class="container">
+        <h3>Row Direction (justify-content: space-around)</h3>
+        <div class="flex-row">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+        <p>Items flow horizontally. Main axis: Left to Right.</p>
+    </div>
+
+    <div class="container">
+        <h3>Column Direction (align-items: flex-end)</h3>
+        <div class="flex-column">
+            <div class="box">A</div>
+            <div class="box">B</div>
+            <div class="box">C</div>
+        </div>
+        <p>Items flow vertically. Cross axis: Left to Right (aligned to end).</p>
+    </div>
+</body>
+</html>
