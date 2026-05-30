@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise and Shine Blog | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --accent: #ff00c8;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background: var(--bg);
+            color: #eee;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a0c1a, var(--bg));
+        }
+
+        header h1 { font-size: 3rem; margin: 0; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; }
+
+        .feed {
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+
+        .article {
+            background: var(--glass);
+            border: 1px solid rgba(255, 0, 200, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .date-box {
+            background: var(--accent);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .content h2 { margin-top: 0; color: white; }
+        .content p { line-height: 1.8; color: #aaa; }
+
+        @media (max-width: 600px) {
+            .article { flex-direction: column; }
+            .date-box { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rise & Shine</h1>
+        <p>Fueling the AI Dev Revolution with Daily Motivation</p>
+    </header>
+
+    <div class="feed">
+        <div class="article">
+            <div class="date-box">30<br>MAY</div>
+            <div class="content">
+                <h2>Mastering the Grid Mindset</h2>
+                <p>In the world of frontend development, structure is everything. Just like a well-optimized neural network, your CSS Grid layouts must be efficient, scalable, and responsive to every change in the environment.</p>
+            </div>
+        </div>
+
+        <div class="article">
+            <div class="date-box">29<br>MAY</div>
+            <div class="content">
+                <h2>The Power of Mobile-First</h2>
+                <p>Starting small isn't a limitation; it's a strategy. By designing for the palm of the hand first, we ensure that our core message is never lost in translation, no matter the scale of the display.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
