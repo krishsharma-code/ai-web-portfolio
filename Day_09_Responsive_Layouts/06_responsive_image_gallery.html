@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Gallery | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --accent: #00f2ff;
+        }
+
+        body {
+            background: var(--bg);
+            color: white;
+            margin: 0;
+            padding: 40px;
+            font-family: sans-serif;
+        }
+
+        h1 { text-align: center; color: var(--accent); margin-bottom: 40px; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .img-card {
+            background: #151518;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .img-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, #111, #222);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 2rem;
+        }
+
+        .info { padding: 15px; text-align: center; }
+        .info span { color: var(--accent); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>AI Project Showcase</h1>
+    <div class="gallery">
+        <div class="img-card"><div class="placeholder">AI-01</div><div class="info"><span>Neural Net</span> Visualizer</div></div>
+        <div class="img-card"><div class="placeholder">AI-02</div><div class="info"><span>DeepBlue</span> Engine</div></div>
+        <div class="img-card"><div class="placeholder">AI-03</div><div class="info"><span>Cyber</span> Pulse</div></div>
+        <div class="img-card"><div class="placeholder">AI-04</div><div class="info"><span>Void</span> Walker</div></div>
+        <div class="img-card"><div class="placeholder">AI-05</div><div class="info"><span>Neon</span> Ghost</div></div>
+        <div class="img-card"><div class="placeholder">AI-06</div><div class="info"><span>Titan</span> Logic</div></div>
+    </div>
+</body>
+</html>
