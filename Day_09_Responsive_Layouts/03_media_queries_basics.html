@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries Basics | AI Web Portfolio</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --text: #e0e0e0;
+            --accent: #00f2ff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+
+        .status-card {
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        /* Mobile View (Default) */
+        h1::after { content: " (Mobile)"; }
+        body { font-size: 14px; }
+
+        /* Tablet View */
+        @media (min-width: 600px) {
+            body { 
+                background-color: #0c1a1a; 
+                --accent: #7000ff;
+                font-size: 18px;
+            }
+            h1::after { content: " (Tablet)"; }
+        }
+
+        /* Desktop View */
+        @media (min-width: 1024px) {
+            body { 
+                background-color: #1a0c1a; 
+                --accent: #ff00c8;
+                font-size: 24px;
+            }
+            h1::after { content: " (Desktop)"; }
+        }
+    </style>
+</head>
+<body>
+    <div class="status-card">
+        <h1>Current Viewport</h1>
+        <p>Resize your browser to see the background and accent color change.</p>
+        <p>Mobile: < 600px | Tablet: 600px - 1024px | Desktop: > 1024px</p>
+    </div>
+</body>
+</html>
