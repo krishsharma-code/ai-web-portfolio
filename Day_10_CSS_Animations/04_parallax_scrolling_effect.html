@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling - Day 10</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            background-color: #000;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .bg1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80'); }
+        .bg2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1920&q=80'); }
+        .bg3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1920&q=80'); }
+
+        .content {
+            height: 400px;
+            background-color: #111;
+            padding: 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 { font-size: 4rem; text-transform: uppercase; letter-spacing: 10px; }
+        h2 { font-size: 2rem; color: #00f3ff; }
+        p { max-width: 600px; margin: 20px auto; line-height: 1.8; color: #aaa; }
+    </style>
+</head>
+<body>
+
+    <div class="parallax bg1">
+        <h1>Future Tech</h1>
+    </div>
+
+    <div class="content">
+        <h2>Immersive Experience</h2>
+        <p>CSS parallax scrolling creates a sense of depth by moving background images at a different speed than the foreground content during scroll.</p>
+    </div>
+
+    <div class="parallax bg2">
+        <h1>Deep Space</h1>
+    </div>
+
+    <div class="content">
+        <h2>Pure Performance</h2>
+        <p>Using background-attachment: fixed is a high-performance way to achieve parallax without heavy JavaScript calculations.</p>
+    </div>
+
+    <div class="parallax bg3">
+        <h1>Neural Link</h1>
+    </div>
+
+</body>
+</html>
