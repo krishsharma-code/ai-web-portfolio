@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Transitions - Day 10</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: #111;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #333;
+            text-align: center;
+            width: 300px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: #1a1a1a;
+            border-color: #00f3ff;
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .icon {
+            transform: rotate(15deg) scale(1.2);
+            color: #00f3ff;
+        }
+
+        h2 {
+            margin: 0;
+            color: #eee;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover h2 {
+            color: #00f3ff;
+        }
+
+        p {
+            color: #888;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">🚀</div>
+        <h2>Hover Me</h2>
+        <p>Smooth transitions and transform effects in action.</p>
+    </div>
+</body>
+</html>
