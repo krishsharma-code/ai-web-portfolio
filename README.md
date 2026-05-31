@@ -119,6 +119,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_rise_and_shine_blog.html**: A Flexbox-driven motivational article feed with responsive stacked states.
 - **10_hardware_store_grid.html**: A high-fidelity responsive product display grid for high-performance PC components.
 
+### Day 10: CSS Animations & Modern UI Effects (`Day_10_CSS_Animations/`)
+- **01_hover_transitions.html**: Smooth background, color, and transform changes on hover with cubic-bezier timing.
+- **02_css_keyframes_basics.html**: Multi-circle pulsing and bouncing loader using layered `@keyframes`.
+- **03_glassmorphism_card.html**: Modern "frosted glass" aesthetic with `backdrop-filter`, blur, and floating background shapes.
+- **04_parallax_scrolling_effect.html**: Immersive 3-section layout using `background-attachment: fixed` for depth.
+- **05_animated_navigation_menu.html**: Interactive navbar with sliding underline micro-interactions.
+- **06_typing_text_animation.html**: Retro-futuristic typewriter effect using `steps()` keyframe timing and blinking cursor.
+- **07_3d_flip_card.html**: Interactive profile card with 180-degree Y-axis rotation using `perspective` and `preserve-3d`.
+- **08_cyberpunk_neon_button.html**: High-fidelity glitching button effect with multiple box-shadows and clip-path animations.
+- **09_vs_studio_team_reveal.html**: Professional team gallery with slide-up detail overlays and image scaling.
+- **10_ai_tool_loading_screen.html**: Complex futuristic screen featuring rotating rings, scanning lines, and pulsing status text.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
