@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Text Animation - Day 10</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .typing-container {
+            width: fit-content;
+        }
+
+        .typing-text {
+            font-size: 2.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid #00ff00;
+            width: 0;
+            animation: 
+                typing 4s steps(30, end) forwards,
+                blink 0.8s infinite ease-in-out;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #00ff00; }
+        }
+
+        .subtitle {
+            color: #888;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 4.5s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="typing-container">
+        <div class="typing-text">Initializing AI Core...</div>
+        <div class="subtitle">> Connection established. Status: Optimal.</div>
+    </div>
+</body>
+</html>
