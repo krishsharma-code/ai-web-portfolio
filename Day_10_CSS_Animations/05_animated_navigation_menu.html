@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Nav Menu - Day 10</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        nav {
+            background: #1a1a1a;
+            height: 80px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            color: #00f3ff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #00f3ff;
+        }
+
+        /* Sliding Underline Effect */
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00f3ff;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 { font-size: 3rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">AI_STUDIO</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">AI Tools</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="hero">
+        <h1>Smooth Navigation Micro-interactions</h1>
+    </div>
+</body>
+</html>
