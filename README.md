@@ -131,9 +131,22 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_vs_studio_team_reveal.html**: Professional team gallery with slide-up detail overlays and image scaling.
 - **10_ai_tool_loading_screen.html**: Complex futuristic screen featuring rotating rings, scanning lines, and pulsing status text.
 
+### Day 11: JS DOM Basics & Interactivity (`Day_11_JS_DOM_Basics/`)
+- **01_dom_element_selectors.html**: Mastering `getElementById` and `querySelector` to dynamically update system status text.
+- **02_event_listeners_click.html**: Implementing multiple click listeners to shift the global atmosphere (background color).
+- **03_dynamic_list_creator.html**: A functional Quest Log using `createElement` and `appendChild` for real-time inventory updates.
+- **04_css_class_toggler.html**: Creating interactive ability cards using `classList.toggle` for expandable UI mechanics.
+- **05_dark_mode_switch.html**: A professional theme switcher with persistent state management using `localStorage`.
+- **06_vs_gaming_score_tracker.html**: A high-fidelity gaming score counter with state-driven display updates and leading-zero padding.
+- **07_form_input_validation.html**: Real-time security key validation using `input` events and conditional UI feedback.
+- **08_mouse_move_tracker.html**: Building a hardware-accelerated motion tracker with live X/Y coordinates and a custom neon cursor.
+- **09_settimeout_popup.html**: Implementing timed UI events with a blur-filtered modal that auto-triggers after a 3-second delay.
+- **10_custom_context_menu.html**: Overriding native browser behavior to implement a stylized, absolute-positioned right-click neural menu.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
+- **JavaScript (ES6+)**: DOM Manipulation, Event Handling, and LocalStorage for interactivity.
 - **Design Aesthetic**: Modern Dark Mode with Neon Accents (Cyan, Lime, Purple).
 
 ## 🚀 Getting Started
