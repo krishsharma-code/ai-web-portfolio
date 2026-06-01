@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Validation | Security UI</title>
+    <style>
+        body {
+            background-color: #0a0b10;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .security-card {
+            background: #151720;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 350px;
+            border-top: 4px solid #333;
+            transition: border-color 0.3s;
+        }
+        h2 { margin-top: 0; font-size: 1.2rem; margin-bottom: 1.5rem; }
+        
+        .field { margin-bottom: 1rem; }
+        label { display: block; font-size: 0.75rem; color: #888; margin-bottom: 0.5rem; text-transform: uppercase; }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #0a0b10;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: white;
+            box-sizing: border-box;
+            outline: none;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        .feedback {
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+        }
+
+        /* States */
+        .weak { color: #ff3e3e; }
+        .medium { color: #ffcc00; }
+        .strong { color: #00ff9d; }
+
+        .security-card.valid-border { border-top-color: #00ff9d; }
+        .security-card.invalid-border { border-top-color: #ff3e3e; }
+    </style>
+</head>
+<body>
+    <div class="security-card" id="card">
+        <h2>ENCRYPTION KEY</h2>
+        <div class="field">
+            <label for="password">Enter Access Code</label>
+            <input type="password" id="password" placeholder="••••••••">
+            <div class="feedback" id="feedback">Security Level: Unknown</div>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const feedback = document.getElementById('feedback');
+        const card = document.getElementById('card');
+
+        passwordInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            let strength = "Unknown";
+            let colorClass = "";
+
+            if (val.length === 0) {
+                strength = "Unknown";
+                card.className = "security-card";
+            } else if (val.length < 6) {
+                strength = "WEAK (Too Short)";
+                colorClass = "weak";
+                card.className = "security-card invalid-border";
+            } else if (val.length < 10) {
+                strength = "MEDIUM (Secure-ish)";
+                colorClass = "medium";
+                card.className = "security-card";
+            } else {
+                strength = "STRONG (Access Granted)";
+                colorClass = "strong";
+                card.className = "security-card valid-border";
+            }
+
+            feedback.textContent = `Security Level: ${strength}`;
+            feedback.className = `feedback ${colorClass}`;
+        });
+    </script>
+</body>
+</html>
