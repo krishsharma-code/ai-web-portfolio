@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listeners | Click Magic</title>
+    <style>
+        body {
+            background-color: #0f0f13;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease;
+        }
+        .controls {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        h2 { margin-top: 0; }
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        button {
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s;
+        }
+        button:active { transform: scale(0.95); }
+        .btn-neon { background: #00f2ff; color: #000; }
+        .btn-lava { background: #ff4d00; color: #fff; }
+        .btn-void { background: #7a00ff; color: #fff; }
+        .btn-reset { background: #333; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h2>Atmosphere Control</h2>
+        <p>Use Event Listeners to shift the visual frequency.</p>
+        <div class="btn-grid">
+            <button id="neon-btn" class="btn-neon">Neon</button>
+            <button id="lava-btn" class="btn-lava">Lava</button>
+            <button id="void-btn" class="btn-void">Void</button>
+            <button id="reset-btn" class="btn-reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        const body = document.body;
+        
+        // Selecting buttons
+        const neonBtn = document.getElementById('neon-btn');
+        const lavaBtn = document.getElementById('lava-btn');
+        const voidBtn = document.getElementById('void-btn');
+        const resetBtn = document.getElementById('reset-btn');
+
+        // Adding Click Event Listeners
+        neonBtn.addEventListener('click', () => {
+            body.style.backgroundColor = '#002b2e';
+        });
+
+        lavaBtn.addEventListener('click', () => {
+            body.style.backgroundColor = '#2e0a00';
+        });
+
+        voidBtn.addEventListener('click', () => {
+            body.style.backgroundColor = '#1a002e';
+        });
+
+        resetBtn.addEventListener('click', () => {
+            body.style.backgroundColor = '#0f0f13';
+        });
+    </script>
+</body>
+</html>
