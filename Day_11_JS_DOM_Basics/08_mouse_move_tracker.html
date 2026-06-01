@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Tracker | Event Flow</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tracker-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+        }
+        .coordinate-box {
+            font-size: 1.2rem;
+            background: rgba(0, 255, 0, 0.1);
+            padding: 10px 20px;
+            border-left: 3px solid #00ff00;
+        }
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+        #custom-cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #00ff00;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.1s, height 0.1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #custom-cursor::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #00ff00;
+            border-radius: 50%;
+        }
+        h1 { opacity: 0.2; pointer-events: none; font-size: 5rem; }
+    </style>
+</head>
+<body>
+    <div class="grid"></div>
+    <div class="tracker-overlay">
+        <div class="coordinate-box">
+            X: <span id="x-val">0</span><br>
+            Y: <span id="y-val">0</span>
+        </div>
+    </div>
+
+    <h1>SCANNING...</h1>
+
+    <div id="custom-cursor"></div>
+
+    <script>
+        const xDisplay = document.getElementById('x-val');
+        const yDisplay = document.getElementById('y-val');
+        const cursor = document.getElementById('custom-cursor');
+
+        // Mousemove event listener
+        window.addEventListener('mousemove', (e) => {
+            // 1. Get coordinates
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // 2. Update text
+            xDisplay.textContent = x;
+            yDisplay.textContent = y;
+
+            // 3. Move custom cursor
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+        });
+
+        // Effect on click
+        window.addEventListener('mousedown', () => {
+            cursor.style.width = '60px';
+            cursor.style.height = '60px';
+            cursor.style.borderColor = '#ff00ff';
+        });
+
+        window.addEventListener('mouseup', () => {
+            cursor.style.width = '40px';
+            cursor.style.height = '40px';
+            cursor.style.borderColor = '#00ff00';
+        });
+    </script>
+</body>
+</html>
