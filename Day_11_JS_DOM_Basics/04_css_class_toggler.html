@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Toggler | UI Mechanics</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            width: 300px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        .card:hover { border-color: #7000ff; }
+        
+        .header {
+            padding: 1.5rem;
+            background: linear-gradient(45deg, #7000ff, #00d4ff);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h3 { margin: 0; font-size: 1.1rem; }
+        
+        .details {
+            max-height: 0;
+            padding: 0 1.5rem;
+            opacity: 0;
+            transition: all 0.4s ease;
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* The 'Active' Class State */
+        .card.active {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(112, 0, 255, 0.3);
+            border-color: #7000ff;
+        }
+        .card.active .details {
+            max-height: 200px;
+            padding: 1.5rem;
+            opacity: 1;
+        }
+        .card.active .header span {
+            transform: rotate(180deg);
+        }
+
+        .header span {
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="ability-card">
+        <div class="header">
+            <h3>NIGHTCRAWLER BLADE</h3>
+            <span>▼</span>
+        </div>
+        <div class="details">
+            A high-frequency vibration blade forged in the neon pits of Neo-Tokyo. Deals +50 Void damage and has a 15% chance to trigger a glitch effect on enemies.
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById('ability-card');
+
+        // Toggle 'active' class on click
+        card.addEventListener('click', () => {
+            card.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
