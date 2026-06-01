@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher | Local Storage</title>
+    <style>
+        :root {
+            --bg: #f4f4f4;
+            --text: #333;
+            --panel: #fff;
+            --accent: #ff0055;
+        }
+
+        /* Dark Theme Variables */
+        body.dark-theme {
+            --bg: #0a0a0a;
+            --text: #f0f0f0;
+            --panel: #1a1a1a;
+            --accent: #00ffcc;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .settings-panel {
+            background: var(--panel);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+            border: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        h2 { margin-bottom: 2rem; letter-spacing: 1px; }
+
+        .toggle-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px var(--accent);
+            transition: transform 0.2s;
+        }
+        .toggle-btn:active { transform: scale(0.95); }
+
+        p { font-size: 0.9rem; opacity: 0.7; margin-top: 1.5rem; }
+    </style>
+</head>
+<body class="light-theme">
+    <div class="settings-panel">
+        <h2 id="theme-label">LIGHT MODE</h2>
+        <button class="toggle-btn" id="theme-toggle">SWITCH MODE</button>
+        <p>Preferences will be saved to the neural cache (localStorage).</p>
+    </div>
+
+    <script>
+        const body = document.body;
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeLabel = document.getElementById('theme-label');
+
+        // 1. Check for saved theme in localStorage on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            enableDarkMode();
+        }
+
+        function enableDarkMode() {
+            body.classList.add('dark-theme');
+            themeLabel.textContent = "DARK MODE";
+            localStorage.setItem('theme', 'dark');
+        }
+
+        function disableDarkMode() {
+            body.classList.remove('dark-theme');
+            themeLabel.textContent = "LIGHT MODE";
+            localStorage.setItem('theme', 'light');
+        }
+
+        // 2. Event Listener for toggle
+        toggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('dark-theme')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+    </script>
+</body>
+</html>
