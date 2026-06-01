@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Event | Modal UI</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        
+        .main-content h2 { color: #555; }
+
+        /* Modal Background Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Modal Box */
+        .modal-card {
+            background: #1e1e1e;
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 400px;
+            border: 1px solid #00ffcc;
+            box-shadow: 0 0 50px rgba(0, 255, 204, 0.2);
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.show { display: flex; }
+        .modal-overlay.show .modal-card { transform: translateY(0); }
+
+        h1 { margin-top: 0; color: #00ffcc; }
+        p { line-height: 1.6; color: #aaa; }
+
+        .close-btn {
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h1>Welcome to the Void</h1>
+        <h2>System analysis in progress...</h2>
+    </div>
+
+    <!-- The Hidden Modal -->
+    <div class="modal-overlay" id="welcome-modal">
+        <div class="modal-card">
+            <h1>INIT COMPLETE</h1>
+            <p>Your session has been authenticated. Neural synchronization at 98%. Proceed with caution, Operator.</p>
+            <button class="close-btn" id="close-modal">ENTER SYSTEM</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('welcome-modal');
+        const closeBtn = document.getElementById('close-modal');
+
+        // 1. Trigger Modal after 3 seconds
+        window.addEventListener('load', () => {
+            console.log("Timer started...");
+            
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 3000); // 3000ms = 3s
+        });
+
+        // 2. Manual Close
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    </script>
+</body>
+</html>
