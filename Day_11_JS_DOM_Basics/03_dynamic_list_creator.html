@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Inventory | DOM Creation</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00e5ff;
+            font-family: 'Consolas', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .inventory-panel {
+            background: #111;
+            padding: 2rem;
+            border: 2px solid #00e5ff;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+        }
+        h2 { text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input {
+            flex: 1;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            outline: none;
+        }
+        input:focus { border-color: #00e5ff; }
+        button {
+            background: #00e5ff;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        ul { list-style: none; padding: 0; }
+        li {
+            background: #1a1a1a;
+            margin-bottom: 8px;
+            padding: 12px;
+            border-left: 4px solid #00e5ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .remove-btn {
+            color: #ff3e3e;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="inventory-panel">
+        <h2>QUEST LOG</h2>
+        <div class="input-group">
+            <input type="text" id="task-input" placeholder="New objective...">
+            <button id="add-btn">ADD</button>
+        </div>
+        <ul id="task-list">
+            <li>Initialize neural link <span class="remove-btn">DONE</span></li>
+        </ul>
+    </div>
+
+    <script>
+        const input = document.getElementById('task-input');
+        const addBtn = document.getElementById('add-btn');
+        const taskList = document.getElementById('task-list');
+
+        function addTask() {
+            const taskValue = input.value.trim();
+            
+            if (taskValue === "") return;
+
+            // 1. Create Element
+            const li = document.createElement('li');
+            
+            // 2. Set content
+            li.innerHTML = `${taskValue} <span class="remove-btn">DONE</span>`;
+            
+            // 3. Append Child
+            taskList.appendChild(li);
+
+            // Clear input
+            input.value = "";
+
+            // Add functionality to remove the new item
+            li.querySelector('.remove-btn').addEventListener('click', () => {
+                li.remove();
+            });
+        }
+
+        addBtn.addEventListener('click', addTask);
+
+        // Allow pressing Enter to add task
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTask();
+        });
+
+        // Initialize remove for existing items
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.target.parentElement.remove();
+            });
+        });
+    </script>
+</body>
+</html>
