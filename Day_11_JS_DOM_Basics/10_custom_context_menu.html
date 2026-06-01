@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Menu | Event Overriding</title>
+    <style>
+        body {
+            background-color: #080808;
+            color: #7000ff;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h2 { opacity: 0.3; }
+
+        /* Custom Context Menu */
+        #context-menu {
+            position: fixed;
+            z-index: 10000;
+            width: 180px;
+            background: #111;
+            border-radius: 8px;
+            border: 1px solid #7000ff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none; /* Hidden by default */
+            padding: 5px 0;
+        }
+
+        .menu-item {
+            padding: 10px 15px;
+            color: #eee;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .menu-item:hover {
+            background: #7000ff;
+            color: #fff;
+        }
+
+        .menu-item.danger { color: #ff3e3e; }
+        .menu-item.danger:hover { background: #ff3e3e; color: #fff; }
+
+        .divider { height: 1px; background: #333; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>Right-click anywhere to trigger the Neural Menu</h2>
+
+    <div id="context-menu">
+        <div class="menu-item">View Source</div>
+        <div class="menu-item">Inspect Neural Link</div>
+        <div class="divider"></div>
+        <div class="menu-item">Copy State</div>
+        <div class="menu-item">Save Preference</div>
+        <div class="divider"></div>
+        <div class="menu-item danger">Force Re-sync</div>
+    </div>
+
+    <script>
+        const menu = document.getElementById('context-menu');
+
+        // 1. Disable Default Menu and Show Custom
+        window.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Stop original right-click menu
+
+            // Positioning our menu at mouse coordinates
+            const x = e.clientX;
+            const y = e.clientY;
+
+            menu.style.left = x + 'px';
+            menu.style.top = y + 'px';
+            menu.style.display = 'block';
+        });
+
+        // 2. Hide menu on regular left click
+        window.addEventListener('click', () => {
+            menu.style.display = 'none';
+        });
+
+        // Optional: Interaction on menu items
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                alert(`Action triggered: ${e.target.innerText}`);
+            });
+        });
+    </script>
+</body>
+</html>
