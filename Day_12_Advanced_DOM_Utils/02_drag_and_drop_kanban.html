@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Kanban | Day 12</title>
+    <style>
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-blue: #00f3ff;
+            --neon-green: #39ff14;
+            --bg-dark: #050505;
+            --surface: #111;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+        .board {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .column {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            width: 300px;
+            min-height: 500px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .column h3 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+        .todo h3 { color: var(--neon-blue); border-color: var(--neon-blue); }
+        .doing h3 { color: var(--neon-pink); border-color: var(--neon-pink); }
+        .done h3 { color: var(--neon-green); border-color: var(--neon-green); }
+
+        .card {
+            background: #222;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: grab;
+            border-left: 4px solid var(--neon-blue);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:active { cursor: grabbing; }
+        .card.dragging { opacity: 0.5; transform: scale(0.95); }
+        
+        .doing .card { border-left-color: var(--neon-pink); }
+        .done .card { border-left-color: var(--neon-green); text-decoration: line-through; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; margin-bottom: 3rem; color: var(--neon-blue);">Project Alpha Kanban</h1>
+
+    <div class="board">
+        <div class="column todo" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>To Do</h3>
+            <div class="card" id="task1" draggable="true" ondragstart="drag(event)">Design Neural Interface</div>
+            <div class="card" id="task2" draggable="true" ondragstart="drag(event)">Fix Quantum Buffer Overflow</div>
+        </div>
+        
+        <div class="column doing" id="doing" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>In Progress</h3>
+            <div class="card" id="task3" draggable="true" ondragstart="drag(event)">Optimizing Shaders</div>
+        </div>
+        
+        <div class="column done" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>Completed</h3>
+            <div class="card" id="task4" draggable="true" ondragstart="drag(event)">Initialize Core AI</div>
+        </div>
+    </div>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.target.classList.add('dragging');
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const card = document.getElementById(data);
+            card.classList.remove('dragging');
+            
+            // Ensure we append to the column, not another card
+            let target = ev.target;
+            while (target && !target.classList.contains('column')) {
+                target = target.parentElement;
+            }
+            
+            if (target) {
+                target.appendChild(card);
+            }
+        }
+    </script>
+</body>
+</html>
