@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Sticky Notes | Day 12</title>
+    <style>
+        :root {
+            --neon-yellow: #fff01f;
+            --bg-dark: #121212;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .controls {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 100;
+        }
+        button {
+            background: var(--neon-yellow);
+            color: black;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--neon-yellow);
+        }
+        .note {
+            position: absolute;
+            width: 200px;
+            min-height: 200px;
+            background: #2a2a2a;
+            border: 1px solid var(--neon-yellow);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+            padding: 1rem;
+            cursor: move;
+            border-top: 10px solid var(--neon-yellow);
+        }
+        .note textarea {
+            width: 100%;
+            height: 150px;
+            background: transparent;
+            border: none;
+            color: white;
+            resize: none;
+            outline: none;
+            font-family: inherit;
+        }
+        .delete-btn {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button id="add-note">+ New Fragment</button>
+    </div>
+
+    <div id="notes-container"></div>
+
+    <script>
+        const container = document.getElementById('notes-container');
+        const addBtn = document.getElementById('add-note');
+
+        let notes = JSON.parse(localStorage.getItem('sticky_notes')) || [];
+
+        function saveNotes() {
+            const notesData = [];
+            document.querySelectorAll('.note').forEach(noteEl => {
+                notesData.push({
+                    id: noteEl.id,
+                    content: noteEl.querySelector('textarea').value,
+                    x: noteEl.style.left,
+                    y: noteEl.style.top
+                });
+            });
+            localStorage.setItem('sticky_notes', JSON.stringify(notesData));
+        }
+
+        function createNote(id, content, x, y) {
+            const note = document.createElement('div');
+            note.className = 'note';
+            note.id = id || `note-${Date.now()}`;
+            note.style.left = x || '100px';
+            note.style.top = y || '100px';
+            
+            note.innerHTML = `
+                <div class="delete-btn">X</div>
+                <textarea placeholder="Write something...">${content || ''}</textarea>
+            `;
+
+            // Dragging Logic
+            note.onmousedown = function(e) {
+                if(e.target.tagName === 'TEXTAREA' || e.target.classList.contains('delete-btn')) return;
+                
+                let shiftX = e.clientX - note.getBoundingClientRect().left;
+                let shiftY = e.clientY - note.getBoundingClientRect().top;
+
+                function moveAt(pageX, pageY) {
+                    note.style.left = pageX - shiftX + 'px';
+                    note.style.top = pageY - shiftY + 'px';
+                }
+
+                function onMouseMove(e) {
+                    moveAt(e.pageX, e.pageY);
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                note.onmouseup = function() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    note.onmouseup = null;
+                    saveNotes();
+                };
+            };
+
+            note.querySelector('textarea').oninput = saveNotes;
+            note.querySelector('.delete-btn').onclick = () => {
+                note.remove();
+                saveNotes();
+            };
+
+            container.appendChild(note);
+            note.ondragstart = () => false;
+        }
+
+        addBtn.onclick = () => createNote();
+
+        // Load existing
+        notes.forEach(n => createNote(n.id, n.content, n.x, n.y));
+    </script>
+</body>
+</html>
