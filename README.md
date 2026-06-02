@@ -143,6 +143,18 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_settimeout_popup.html**: Implementing timed UI events with a blur-filtered modal that auto-triggers after a 3-second delay.
 - **10_custom_context_menu.html**: Overriding native browser behavior to implement a stylized, absolute-positioned right-click neural menu.
 
+### Day 12: Advanced DOM Utils & Web APIs (`Day_12_Advanced_DOM_Utils/`)
+- **01_custom_audio_player.html**: A stylized audio player UI with custom controls and dynamic progress tracking via `timeupdate`.
+- **02_drag_and_drop_kanban.html**: Mini Kanban board implementing the HTML5 Drag and Drop API for fluid task management.
+- **03_infinite_scroll_list.html**: Dynamic gamer-profile feed that fetches and appends mock data as the user scrolls.
+- **04_localstorage_sticky_notes.html**: Persistent workspace where note content and positions are saved across sessions using `localStorage`.
+- **05_keyboard_hero_game.html**: Terminal-style typing game capturing `keydown` events with WPM calculation and visual error feedback.
+- **06_dynamic_data_table.html**: Interactive table component with client-side sorting, real-time filtering, and array-backed state.
+- **07_intersection_observer_reveal.html**: Sleek scroll-triggered entry animations using the Intersection Observer API.
+- **08_cyberpunk_countdown_timer.html**: Precision timer with SVG ring fill animations and accurate `setInterval` tracking.
+- **09_form_autosave_draft.html**: Profile form with automatic `sessionStorage` persistence to prevent data loss on refresh.
+- **10_toast_notification_manager.html**: Centralized notification system using a class-based manager to spawn animated toast bubbles.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
