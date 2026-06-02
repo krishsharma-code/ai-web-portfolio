@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Manager | Day 12</title>
+    <style>
+        :root {
+            --neon-green: #39ff14;
+            --neon-red: #ff3131;
+            --bg-dark: #050505;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+        .toast {
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            background: #111;
+            border-left: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .toast.success { border-left-color: var(--neon-green); color: var(--neon-green); }
+        .toast.error { border-left-color: var(--neon-red); color: var(--neon-red); }
+        
+        .toast.fade-out {
+            animation: fadeOut 0.5s ease-in forwards;
+        }
+        @keyframes fadeOut {
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        .btn-container { display: flex; gap: 1rem; }
+        button {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            background: transparent;
+            border: 2px solid;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .btn-success { border-color: var(--neon-green); color: var(--neon-green); }
+        .btn-error { border-color: var(--neon-red); color: var(--neon-red); }
+    </style>
+</head>
+<body>
+
+    <div class="btn-container">
+        <button class="btn-success" onclick="notifier.show('System Online', 'success')">Trigger Success</button>
+        <button class="btn-error" onclick="notifier.show('Breach Detected!', 'error')">Trigger Warning</button>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script>
+        class ToastManager {
+            constructor() {
+                this.container = document.getElementById('toast-container');
+            }
+
+            show(message, type = 'success') {
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.innerHTML = `
+                    <span>${message}</span>
+                    <span style="cursor:pointer; margin-left: 1rem;" onclick="this.parentElement.remove()">×</span>
+                `;
+
+                this.container.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.add('fade-out');
+                    toast.addEventListener('animationend', () => toast.remove());
+                }, 4000);
+            }
+        }
+
+        const notifier = new ToastManager();
+    </script>
+</body>
+</html>
