@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Timer | Day 12</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --bg-dark: #050505;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .timer-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+        }
+        .bg-circle { stroke: #222; }
+        .progress-circle {
+            stroke: var(--neon-blue);
+            stroke-dasharray: 880;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s linear;
+            filter: drop-shadow(0 0 10px var(--neon-blue));
+        }
+        .time-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        .controls {
+            position: fixed;
+            bottom: 10%;
+            display: flex;
+            gap: 1rem;
+        }
+        button {
+            background: #111;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 0.5rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        button:hover { background: var(--neon-blue); color: black; }
+    </style>
+</head>
+<body>
+
+    <div class="timer-container">
+        <svg>
+            <circle class="bg-circle" cx="150" cy="150" r="140"></circle>
+            <circle class="progress-circle" id="progress" cx="150" cy="150" r="140"></circle>
+        </svg>
+        <div class="time-display" id="display">00:00</div>
+    </div>
+
+    <div class="controls">
+        <button onclick="startTimer(60)">1 Min</button>
+        <button onclick="startTimer(300)">5 Min</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        const progress = document.getElementById('progress');
+        const totalDash = 880;
+        
+        let timeLeft = 0;
+        let totalTime = 0;
+        let timerId = null;
+
+        function startTimer(seconds) {
+            clearInterval(timerId);
+            timeLeft = seconds;
+            totalTime = seconds;
+            updateDisplay();
+            
+            timerId = setInterval(() => {
+                timeLeft--;
+                updateDisplay();
+                
+                const offset = totalDash - (timeLeft / totalTime) * totalDash;
+                progress.style.strokeDashoffset = offset;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerId);
+                    alert("SEQUENCE COMPLETE");
+                }
+            }, 1000);
+        }
+
+        function updateDisplay() {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function resetTimer() {
+            clearInterval(timerId);
+            timeLeft = 0;
+            progress.style.strokeDashoffset = 0;
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
