@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Hero | Day 12</title>
+    <style>
+        :root {
+            --neon-red: #ff3131;
+            --bg-dark: #000;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.1s;
+        }
+        .container { text-align: center; }
+        .word-display { font-size: 4rem; margin-bottom: 2rem; letter-spacing: 5px; }
+        .stats { font-size: 1.5rem; opacity: 0.8; }
+        .wrong-flash { background-color: var(--neon-red) !important; }
+        .instruction { margin-top: 2rem; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="word-display" id="word">READY?</div>
+        <div class="stats">
+            Score: <span id="score">0</span> | WPM: <span id="wpm">0</span>
+        </div>
+        <div class="instruction">Press any key to start...</div>
+    </div>
+
+    <script>
+        const wordEl = document.getElementById('word');
+        const scoreEl = document.getElementById('score');
+        const wpmEl = document.getElementById('wpm');
+        
+        const words = ["SYNTAX", "VOID", "NODE", "CALLBACK", "BUFFER", "QUERY", "PROMISE", "FETCH", "ARRAY", "OBJECT"];
+        let currentWord = "";
+        let score = 0;
+        let startTime = null;
+        let typedCount = 0;
+
+        function nextWord() {
+            currentWord = words[Math.floor(Math.random() * words.length)];
+            wordEl.innerText = currentWord;
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (!startTime) {
+                startTime = Date.now();
+                nextWord();
+                return;
+            }
+
+            const key = e.key.toUpperCase();
+            
+            if (key === currentWord[0]) {
+                currentWord = currentWord.slice(1);
+                wordEl.innerText = currentWord;
+                typedCount++;
+                
+                if (currentWord.length === 0) {
+                    score++;
+                    scoreEl.innerText = score;
+                    nextWord();
+                }
+            } else {
+                // Wrong key flash
+                document.body.classList.add('wrong-flash');
+                setTimeout(() => document.body.classList.remove('wrong-flash'), 100);
+            }
+
+            // Update WPM
+            const timeElapsed = (Date.now() - startTime) / 60000; // in minutes
+            const wpm = Math.round((typedCount / 5) / timeElapsed) || 0;
+            wpmEl.innerText = wpm;
+        });
+    </script>
+</body>
+</html>
