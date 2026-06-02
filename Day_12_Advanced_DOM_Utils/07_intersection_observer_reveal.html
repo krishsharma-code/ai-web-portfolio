@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection Reveal | Day 12</title>
+    <style>
+        :root {
+            --neon-purple: #bc13fe;
+            --bg-dark: #050505;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        section.revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .odd { background: #0a0a0a; color: var(--neon-purple); text-shadow: 0 0 20px var(--neon-purple); }
+        .even { background: #111; color: white; }
+    </style>
+</head>
+<body>
+
+    <section class="odd">Initialize</section>
+    <section class="even">Connect</section>
+    <section class="odd">Execute</section>
+    <section class="even">Optimize</section>
+    <section class="odd">Complete</section>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                } else {
+                    // Optional: remove to re-trigger animation on scroll up
+                    // entry.target.classList.remove('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
