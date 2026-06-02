@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Autosave | Day 12</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --bg-dark: #0a0a0c;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-card {
+            background: #15151b;
+            padding: 2.5rem;
+            border-radius: 10px;
+            width: 400px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        h2 { color: var(--neon-blue); margin-bottom: 2rem; }
+        .group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8; }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: #222;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+            outline: none;
+            box-sizing: border-box;
+        }
+        input:focus { border-color: var(--neon-blue); }
+        .status {
+            font-size: 0.8rem;
+            color: var(--neon-blue);
+            margin-top: 1rem;
+            opacity: 0.6;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-card">
+        <h2>Pilot Profile</h2>
+        <form id="profile-form">
+            <div class="group">
+                <label>Callsign</label>
+                <input type="text" name="callsign" id="callsign">
+            </div>
+            <div class="group">
+                <label>Bio-Data</label>
+                <textarea name="bio" id="bio" rows="4"></textarea>
+            </div>
+            <div class="group">
+                <label>Neural Link ID</label>
+                <input type="text" name="neural_id" id="neural_id">
+            </div>
+        </form>
+        <div class="status" id="status">Syncing...</div>
+    </div>
+
+    <script>
+        const form = document.getElementById('profile-form');
+        const status = document.getElementById('status');
+
+        // Load from sessionStorage
+        const savedData = JSON.parse(sessionStorage.getItem('profile_draft'));
+        if (savedData) {
+            Object.keys(savedData).forEach(key => {
+                if (form[key]) form[key].value = savedData[key];
+            });
+            status.innerText = "Draft restored from session.";
+        }
+
+        form.addEventListener('input', () => {
+            const formData = {
+                callsign: form.callsign.value,
+                bio: form.bio.value,
+                neural_id: form.neural_id.value
+            };
+            
+            sessionStorage.setItem('profile_draft', JSON.stringify(formData));
+            
+            status.innerText = "Changes saved to draft...";
+            status.style.opacity = "1";
+            
+            setTimeout(() => {
+                status.style.opacity = "0.4";
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
