@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Data Table | Day 12</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --bg-dark: #0a0a0c;
+            --surface: #1a1a20;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            font-family: sans-serif;
+            padding: 3rem;
+        }
+        .controls {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        input {
+            background: #222;
+            border: 1px solid var(--neon-blue);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 5px;
+            width: 300px;
+            outline: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.05);
+        }
+        th {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-blue);
+            text-align: left;
+            padding: 1.2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            user-select: none;
+        }
+        th:hover { background: rgba(0, 243, 255, 0.2); }
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        tr:hover { background: rgba(255,255,255,0.02); }
+        .sort-icon { margin-left: 0.5rem; }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <h2 style="color: var(--neon-blue); margin: 0;">Employee Registry</h2>
+        <input type="text" id="search" placeholder="Search by name or role...">
+    </div>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th data-key="id">ID <span class="sort-icon">↕</span></th>
+                <th data-key="name">Name <span class="sort-icon">↕</span></th>
+                <th data-key="role">Role <span class="sort-icon">↕</span></th>
+                <th data-key="salary">Salary ($) <span class="sort-icon">↕</span></th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <script>
+        const data = [
+            { id: 101, name: "Alice Vance", role: "UI Architect", salary: 120000 },
+            { id: 105, name: "Bob Smith", role: "DevOps Engineer", salary: 115000 },
+            { id: 102, name: "Charlie Day", role: "Backend Lead", salary: 135000 },
+            { id: 104, name: "Diana Prince", role: "Frontend Dev", salary: 95000 },
+            { id: 103, name: "Edward Norton", role: "Product Manager", salary: 110000 },
+        ];
+
+        const tableBody = document.getElementById('table-body');
+        const searchInput = document.getElementById('search');
+        let currentSort = { key: null, direction: 'asc' };
+
+        function renderTable(filter = '') {
+            const filteredData = data.filter(item => 
+                item.name.toLowerCase().includes(filter.toLowerCase()) || 
+                item.role.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            tableBody.innerHTML = filteredData.map(item => `
+                <tr>
+                    <td>#${item.id}</td>
+                    <td style="color: var(--neon-blue); font-weight: bold;">${item.name}</td>
+                    <td>${item.role}</td>
+                    <td>${item.salary.toLocaleString()}</td>
+                </tr>
+            `).join('');
+        }
+
+        function sortData(key) {
+            const direction = currentSort.key === key && currentSort.direction === 'asc' ? 'desc' : 'asc';
+            currentSort = { key, direction };
+
+            data.sort((a, b) => {
+                if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
+                if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            renderTable(searchInput.value);
+        }
+
+        document.querySelectorAll('th').forEach(th => {
+            th.addEventListener('click', () => sortData(th.dataset.key));
+        });
+
+        searchInput.addEventListener('input', (e) => renderTable(e.target.value));
+
+        // Initial render
+        renderTable();
+    </script>
+</body>
+</html>
