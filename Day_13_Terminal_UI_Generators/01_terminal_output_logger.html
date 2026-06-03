@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro CRT Terminal Logger</title>
+    <style>
+        :root {
+            --term-green: #00ff41;
+            --term-bg: #0c0c0c;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .terminal-container {
+            width: 80%;
+            height: 60%;
+            background-color: var(--term-bg);
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* CRT Scanline Effect */
+        .terminal-container::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .output-log {
+            color: var(--term-green);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            height: 100%;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .output-log::-webkit-scrollbar {
+            display: none;
+        }
+
+        .line {
+            opacity: 0;
+            animation: fadeIn 0.1s forwards;
+            margin-bottom: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2rem;
+            background-color: var(--term-green);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .terminal-header {
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-container">
+        <div class="terminal-header">SYS_LOGGER v1.0.4 - [USER: KRISH_SHARMA]</div>
+        <div class="output-log" id="log">
+            <!-- Logs will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const logContainer = document.getElementById('log');
+        const messages = [
+            "[INFO] Initializing system audit...",
+            "[OK] Kernel modules loaded.",
+            "[INFO] Establishing neural link...",
+            "[WARN] Latency detected in sector 7G.",
+            "[INFO] Fetching encrypted workspace structures...",
+            "[OK] Workspace successfully mapped.",
+            "[DEBUG] Scanning for dead code...",
+            "[DEBUG] Checking dependencies...",
+            "[INFO] 12 instances of 'TODO' found.",
+            "[SUCCESS] System health check complete.",
+            "[INFO] Awaiting user command..."
+        ];
+
+        let index = 0;
+
+        function addLog() {
+            if (index >= messages.length) {
+                index = 0; // Loop logs
+            }
+
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.textContent = `> ${messages[index]}`;
+            
+            // Remove previous cursor
+            const oldCursor = document.querySelector('.cursor');
+            if (oldCursor) oldCursor.remove();
+
+            logContainer.appendChild(line);
+            
+            // Add new cursor
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            line.appendChild(cursor);
+
+            logContainer.scrollTop = logContainer.scrollHeight;
+            index++;
+
+            setTimeout(addLog, Math.random() * 1500 + 500);
+        }
+
+        window.onload = () => {
+            addLog();
+        };
+    </script>
+</body>
+</html>
