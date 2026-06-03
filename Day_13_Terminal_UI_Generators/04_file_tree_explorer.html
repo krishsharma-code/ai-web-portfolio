@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Tree Explorer</title>
+    <style>
+        :root {
+            --bg: #1e1e1e;
+            --text: #cccccc;
+            --accent: #3794ff;
+            --hover-bg: #2a2d2e;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .explorer {
+            width: 300px;
+            border-right: 1px solid #333;
+            height: 90vh;
+        }
+
+        .tree-node {
+            padding-left: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .node-label {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            transition: background 0.2s;
+        }
+
+        .node-label:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            display: inline-block;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .folder-icon::before { content: "📁"; }
+        .file-icon::before { content: "📄"; }
+        .collapsed .folder-icon::before { content: "📁"; }
+        .expanded .folder-icon::before { content: "📂"; }
+
+        .children {
+            display: none;
+        }
+
+        .expanded > .children {
+            display: block;
+        }
+
+        .arrow {
+            width: 10px;
+            transition: transform 0.2s;
+            margin-right: 5px;
+        }
+
+        .collapsed > .node-label .arrow {
+            transform: rotate(0deg);
+        }
+
+        .expanded > .node-label .arrow {
+            transform: rotate(90deg);
+        }
+
+        .arrow::before { content: "▶"; font-size: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2 style="font-size: 0.9rem; color: #888; text-transform: uppercase;">Explorer: WORKSPACE</h2>
+
+    <div class="explorer" id="tree-container">
+        <!-- Tree will be injected here -->
+    </div>
+
+    <script>
+        const workspaceData = {
+            name: "python-daily-practice",
+            type: "folder",
+            children: [
+                {
+                    name: "Day_14_Gemini_CLI_Suite",
+                    type: "folder",
+                    children: [
+                        { name: "01_gemini_auth_test.py", type: "file" },
+                        { name: "02_cli_code_explainer.py", type: "file" },
+                        { name: "README.md", type: "file" }
+                    ]
+                },
+                {
+                    name: "Day_15_Gemini_Ultimate_CLI",
+                    type: "folder",
+                    children: [
+                        { name: "01_repo_auditor_cli.py", type: "file" },
+                        { name: "02_git_commit_summarizer.py", type: "file" }
+                    ]
+                },
+                { name: "requirements.txt", type: "file" },
+                { name: "README.md", type: "file" }
+            ]
+        };
+
+        function createNode(data) {
+            const node = document.createElement('div');
+            node.className = `tree-node ${data.type === 'folder' ? 'collapsed' : ''}`;
+
+            const label = document.createElement('div');
+            label.className = 'node-label';
+
+            if (data.type === 'folder') {
+                const arrow = document.createElement('span');
+                arrow.className = 'arrow';
+                label.appendChild(arrow);
+            } else {
+                const spacer = document.createElement('span');
+                spacer.style.width = '15px';
+                label.appendChild(spacer);
+            }
+
+            const icon = document.createElement('span');
+            icon.className = `icon ${data.type}-icon`;
+            label.appendChild(icon);
+
+            const text = document.createElement('span');
+            text.textContent = data.name;
+            label.appendChild(text);
+
+            node.appendChild(label);
+
+            if (data.type === 'folder' && data.children) {
+                const childrenContainer = document.createElement('div');
+                childrenContainer.className = 'children';
+                data.children.forEach(child => {
+                    childrenContainer.appendChild(createNode(child));
+                });
+                node.appendChild(childrenContainer);
+
+                label.onclick = (e) => {
+                    e.stopPropagation();
+                    node.classList.toggle('collapsed');
+                    node.classList.toggle('expanded');
+                };
+            }
+
+            return node;
+        }
+
+        window.onload = () => {
+            const root = createNode(workspaceData);
+            document.getElementById('tree-container').appendChild(root);
+        };
+    </script>
+</body>
+</html>
