@@ -155,6 +155,19 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_form_autosave_draft.html**: Profile form with automatic `sessionStorage` persistence to prevent data loss on refresh.
 - **10_toast_notification_manager.html**: Centralized notification system using a class-based manager to spawn animated toast bubbles.
 
+### Day 13: Terminal UI Generators (`Day_13_Terminal_UI_Generators/`)
+*Terminal UI Architecture & Metrics Mapping* ✅ **COMPLETED**
+- **01_terminal_output_logger.html**: A retro CRT Linux terminal component with animated scrolling text output arrays.
+- **02_api_quota_dashboard.html**: Interactive grid dashboard visualizing model tokens, execution delay gauges, and daily API usage charts.
+- **03_system_telemetry_grid.html**: Cyberpunk style workspace tracking CPU/Network streams with high-performance mock canvas graphics.
+- **04_file_tree_explorer.html**: Dynamic file-tree node component utilizing recursive DOM manipulation to collapse/expand workspace structures.
+- **05_git_diff_visualizer.html**: Color-coded syntax highlighter showing local changes with green/red line highlighting.
+- **06_prompt_playground.html**: Advanced interface to write, benchmark system instructions, and visualize raw response logs.
+- **07_drag_drop_pipeline.html**: Kanban style flowchart node system where drag-and-drop connections trigger mock script executions.
+- **08_cyber_error_boundary.html**: Neon flash overlay container that intercepts application failure states and presents detailed debug steps.
+- **09_live_activity_feed.html**: Event stream container displaying real-time task notifications using CSS absolute transform slide transitions.
+- **10_settings_sync_panel.html**: Interface panel handling API configurations and themes, with encrypted state backups to sessionStorage.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
