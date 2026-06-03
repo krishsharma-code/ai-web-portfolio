@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Sync Panel</title>
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --panel: #222;
+            --accent: #00ff88;
+            --text: #fff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .settings-panel {
+            width: 400px;
+            background: var(--panel);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .panel-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .setting-item {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            background: #111;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+        }
+
+        .sync-status {
+            font-size: 0.75rem;
+            color: #555;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #555;
+            border-radius: 50%;
+        }
+
+        .status-dot.active {
+            background: var(--accent);
+            box-shadow: 0 0 5px var(--accent);
+        }
+
+        .btn-save {
+            width: 100%;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.1s;
+        }
+
+        .btn-save:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="settings-panel">
+        <div class="panel-header">
+            SYSTEM_SETTINGS
+            <span style="font-size: 0.7rem; color: #444;">v2.0.1</span>
+        </div>
+
+        <div class="setting-item">
+            <span class="label">Gemini API Key</span>
+            <input type="text" id="api-key" placeholder="Enter API Key..." value="••••••••••••••••">
+        </div>
+
+        <div class="setting-item">
+            <span class="label">UI Theme</span>
+            <select id="theme">
+                <option value="cyber-dark">Cyber Dark (Default)</option>
+                <option value="matrix-green">Matrix Green</option>
+                <option value="vapor-wave">Vapor Wave</option>
+            </select>
+        </div>
+
+        <div class="setting-item">
+            <span class="label">Telemetry Level</span>
+            <select id="telemetry">
+                <option value="verbose">Verbose</option>
+                <option value="standard">Standard</option>
+                <option value="minimal">Minimal</option>
+            </select>
+        </div>
+
+        <button class="btn-save" onclick="saveSettings()">SYNC_CHANGES</button>
+
+        <div class="sync-status">
+            <div class="status-dot" id="dot"></div>
+            <span id="status-text">Local state only. Not synced.</span>
+        </div>
+    </div>
+
+    <script>
+        function saveSettings() {
+            const dot = document.getElementById('dot');
+            const status = document.getElementById('status-text');
+            const apiKey = document.getElementById('api-key').value;
+            const theme = document.getElementById('theme').value;
+
+            // Mock Encryption & Session Storage
+            const state = {
+                key: btoa(apiKey), // Base64 mock encryption
+                theme: theme,
+                lastSync: new Date().toISOString()
+            };
+
+            sessionStorage.setItem('SYS_CONFIG', JSON.stringify(state));
+
+            status.textContent = "Syncing with neural cloud...";
+            dot.classList.remove('active');
+
+            setTimeout(() => {
+                dot.classList.add('active');
+                status.textContent = "Changes synced and encrypted. Session persistent.";
+            }, 1000);
+        }
+
+        // Load initial state
+        window.onload = () => {
+            const saved = sessionStorage.getItem('SYS_CONFIG');
+            if (saved) {
+                const state = JSON.parse(saved);
+                document.getElementById('theme').value = state.theme;
+                document.getElementById('dot').classList.add('active');
+                document.getElementById('status-text').textContent = "Persisted state loaded from sessionStorage.";
+            }
+        };
+    </script>
+</body>
+</html>
