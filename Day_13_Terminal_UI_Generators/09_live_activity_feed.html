@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Activity Feed</title>
+    <style>
+        :root {
+            --bg: #000;
+            --feed-bg: #0a0a0a;
+            --accent: #00e5ff;
+            --text: #eee;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .feed-container {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .notification {
+            background: var(--feed-bg);
+            border: 1px solid #222;
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            transform: translateX(400px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification.exit {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        .notify-header {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .notify-body {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .notify-time {
+            font-size: 0.7rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="feed-container" id="feed">
+        <!-- Notifications will slide in here -->
+    </div>
+
+    <script>
+        const activities = [
+            { type: "GIT_COMMIT", user: "krish-sharma", msg: "Feat: Added 08_cyber_error_boundary.html" },
+            { type: "DEPLOY", user: "system", msg: "Production node 'delta-7' re-stabilized." },
+            { type: "SECURITY", user: "audit-bot", msg: "Weekly vulnerability scan complete. 0 issues found." },
+            { type: "API_CALL", user: "gemini-flash", msg: "Token count update: 845,200 used." },
+            { type: "SYS_ALERT", user: "kernel", msg: "Workspace 'ai-web-portfolio' synchronized with cloud." }
+        ];
+
+        function createNotification(data) {
+            const feed = document.getElementById('feed');
+            const note = document.createElement('div');
+            note.className = 'notification';
+            
+            note.innerHTML = `
+                <div class="notify-header">
+                    <span>${data.type}</span>
+                    <span class="notify-time">${new Date().toLocaleTimeString()}</span>
+                </div>
+                <div class="notify-body">
+                    <strong>${data.user}:</strong> ${data.msg}
+                </div>
+            `;
+
+            feed.appendChild(note);
+
+            // Trigger enter animation
+            setTimeout(() => note.classList.add('show'), 100);
+
+            // Trigger exit animation and removal
+            setTimeout(() => {
+                note.classList.add('exit');
+                setTimeout(() => note.remove(), 400);
+            }, 6000);
+        }
+
+        let index = 0;
+        function startFeed() {
+            createNotification(activities[index]);
+            index = (index + 1) % activities.length;
+            setTimeout(startFeed, Math.random() * 3000 + 2000);
+        }
+
+        window.onload = startFeed;
+    </script>
+</body>
+</html>
