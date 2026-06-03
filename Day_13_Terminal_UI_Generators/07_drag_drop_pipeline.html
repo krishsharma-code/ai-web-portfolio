@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Pipeline</title>
+    <style>
+        :root {
+            --bg: #121212;
+            --node-bg: #1e1e1e;
+            --accent: #00ff88;
+            --border: #333;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #eee;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .canvas {
+            width: 100vw;
+            height: 100vh;
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            background-size: 30px 30px;
+            position: relative;
+        }
+
+        .node {
+            width: 180px;
+            background: var(--node-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            position: absolute;
+            cursor: move;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: border-color 0.2s;
+        }
+
+        .node:hover {
+            border-color: var(--accent);
+        }
+
+        .node-header {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .node-body {
+            padding: 12px;
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+
+        .connector {
+            width: 10px;
+            height: 10px;
+            background: #555;
+            border-radius: 50%;
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .pipeline-status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #000;
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            display: none;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="canvas" id="canvas">
+        <h2 style="position: absolute; top: 20px; left: 20px; color: #444;">AI_PIPELINE_DESIGNER_v4</h2>
+
+        <!-- Node 1 -->
+        <div class="node" style="top: 100px; left: 100px;" draggable="true" id="node1">
+            <div class="node-header">FETCH_DATA <span>INPUT</span></div>
+            <div class="node-body">Scrapes latest repo changes from GitHub API.</div>
+            <div class="connector"></div>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="node" style="top: 250px; left: 400px;" draggable="true" id="node2">
+            <div class="node-header">GEMINI_AUDIT <span>PROCESS</span></div>
+            <div class="node-body">Analyze security and performance metrics.</div>
+            <div class="connector"></div>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="node" style="top: 150px; left: 700px;" draggable="true" id="node3">
+            <div class="node-header">DOCS_GEN <span>OUTPUT</span></div>
+            <div class="node-body">Generate Markdown documentation files.</div>
+        </div>
+    </div>
+
+    <div class="pipeline-status" id="status">Executing: FETCH_DATA -> GEMINI_AUDIT -> DOCS_GEN</div>
+
+    <script>
+        const nodes = document.querySelectorAll('.node');
+        let activeNode = null;
+        let offset = { x: 0, y: 0 };
+
+        nodes.forEach(node => {
+            node.addEventListener('mousedown', (e) => {
+                activeNode = node;
+                const rect = node.getBoundingClientRect();
+                offset.x = e.clientX - rect.left;
+                offset.y = e.clientY - rect.top;
+            });
+
+            node.addEventListener('dragstart', (e) => {
+                // Necessary for dragging to trigger
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (activeNode) {
+                activeNode.style.left = (e.clientX - offset.x) + 'px';
+                activeNode.style.top = (e.clientY - offset.y) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (activeNode) {
+                showStatus();
+                activeNode = null;
+            }
+        });
+
+        function showStatus() {
+            const status = document.getElementById('status');
+            status.style.display = 'block';
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
