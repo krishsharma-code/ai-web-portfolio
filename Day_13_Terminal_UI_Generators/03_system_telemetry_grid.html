@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Telemetry Grid</title>
+    <style>
+        :root {
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --cyber-bg: #020205;
+        }
+
+        body {
+            background-color: var(--cyber-bg);
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            height: 95vh;
+        }
+
+        .telemetry-panel {
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            background: rgba(0, 210, 255, 0.05);
+            position: relative;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        canvas {
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text {
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 var(--neon-pink); }
+            5% { text-shadow: -2px 0 var(--neon-blue); }
+            10% { text-shadow: 2px 0 var(--neon-pink); }
+            15% { text-shadow: none; }
+        }
+
+        .decor-line {
+            position: absolute;
+            background: var(--neon-blue);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="telemetry-grid">
+        <!-- CPU Load Panel -->
+        <div class="telemetry-panel">
+            <div class="panel-header">
+                <span>CPU_LOAD_NODE_01</span>
+                <span class="glitch-text">78%</span>
+            </div>
+            <canvas id="cpu-canvas"></canvas>
+        </div>
+
+        <!-- Network Traffic Panel -->
+        <div class="telemetry-panel">
+            <div class="panel-header">
+                <span>NET_STREAM_OUT</span>
+                <span>1.4 GB/S</span>
+            </div>
+            <canvas id="net-canvas"></canvas>
+        </div>
+
+        <!-- GPU Thermal Panel -->
+        <div class="telemetry-panel">
+            <div class="panel-header">
+                <span>GPU_TEMP_CORE</span>
+                <span style="color: var(--neon-pink);">64°C</span>
+            </div>
+            <canvas id="gpu-canvas"></canvas>
+        </div>
+
+        <!-- Memory Allocation Panel -->
+        <div class="telemetry-panel">
+            <div class="panel-header">
+                <span>MEM_ALLOC_SEG_0x44</span>
+                <span>12.4GB / 32GB</span>
+            </div>
+            <canvas id="mem-canvas"></canvas>
+        </div>
+    </div>
+
+    <script>
+        function initCanvas(id, color) {
+            const canvas = document.getElementById(id);
+            const ctx = canvas.getContext('2d');
+            let width, height;
+
+            function resize() {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            const points = new Array(50).fill(0).map(() => Math.random() * height);
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                
+                const step = width / (points.length - 1);
+                ctx.moveTo(0, points[0]);
+
+                for (let i = 1; i < points.length; i++) {
+                    ctx.lineTo(i * step, points[i]);
+                }
+                ctx.stroke();
+
+                // Fill area under the curve
+                ctx.lineTo(width, height);
+                ctx.lineTo(0, height);
+                ctx.fillStyle = color.replace('1)', '0.1)');
+                ctx.fill();
+
+                // Update points
+                points.shift();
+                points.push(Math.random() * height * 0.8 + (height * 0.1));
+
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
+
+        window.onload = () => {
+            initCanvas('cpu-canvas', 'rgba(0, 210, 255, 1)');
+            initCanvas('net-canvas', 'rgba(255, 0, 127, 1)');
+            initCanvas('gpu-canvas', 'rgba(0, 255, 65, 1)');
+            initCanvas('mem-canvas', 'rgba(255, 204, 0, 1)');
+        };
+    </script>
+</body>
+</html>
