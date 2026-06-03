@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Diff Visualizer</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --text: #c9d1d9;
+            --added-bg: rgba(46, 160, 67, 0.15);
+            --added-line: #3fb950;
+            --deleted-bg: rgba(248, 81, 70, 0.15);
+            --deleted-line: #f85149;
+            --border: #30363d;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .diff-container {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .diff-header {
+            background-color: #161b22;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
+
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .diff-row {
+            display: flex;
+        }
+
+        .line-num {
+            width: 40px;
+            text-align: right;
+            padding-right: 10px;
+            color: #484f58;
+            user-select: none;
+            background-color: #0d1117;
+        }
+
+        .line-content {
+            padding-left: 10px;
+            white-space: pre;
+            flex-grow: 1;
+        }
+
+        .line-added {
+            background-color: var(--added-bg);
+        }
+        .line-added .line-num { color: var(--added-line); }
+        .line-added .line-content::before { content: "+ "; color: var(--added-line); }
+
+        .line-deleted {
+            background-color: var(--deleted-bg);
+        }
+        .line-deleted .line-num { color: var(--deleted-line); }
+        .line-deleted .line-content::before { content: "- "; color: var(--deleted-line); }
+
+        .line-unchanged .line-content::before { content: "  "; }
+
+        .diff-marker {
+            background-color: #1f2428;
+            color: #79c0ff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center; color: #8b949e;">DIFF_VIEWER [02_git_commit_summarizer.py]</h2>
+
+    <div class="diff-container">
+        <div class="diff-header">Comparing main...feature/ai-docs</div>
+        
+        <div class="diff-marker">@@ -15,10 +15,12 @@</div>
+
+        <div class="diff-row line-unchanged">
+            <div class="line-num">15</div>
+            <div class="line-content">def get_git_diff():</div>
+        </div>
+        <div class="diff-row line-unchanged">
+            <div class="line-num">16</div>
+            <div class="line-content">    try:</div>
+        </div>
+        <div class="diff-row line-deleted">
+            <div class="line-num">17</div>
+            <div class="line-content">        result = subprocess.run(["git", "diff"], capture_output=True)</div>
+        </div>
+        <div class="diff-row line-added">
+            <div class="line-num">17</div>
+            <div class="line-content">        result = subprocess.run(</div>
+        </div>
+        <div class="diff-row line-added">
+            <div class="line-num">18</div>
+            <div class="line-content">            ["git", "diff", "--cached"],</div>
+        </div>
+        <div class="diff-row line-added">
+            <div class="line-num">19</div>
+            <div class="line-content">            capture_output=True, text=True</div>
+        </div>
+        <div class="diff-row line-added">
+            <div class="line-num">20</div>
+            <div class="line-content">        )</div>
+        </div>
+        <div class="diff-row line-unchanged">
+            <div class="line-num">21</div>
+            <div class="line-content">        return result.stdout</div>
+        </div>
+        <div class="diff-row line-unchanged">
+            <div class="line-num">22</div>
+            <div class="line-content">    except Exception as e:</div>
+        </div>
+        <div class="diff-row line-deleted">
+            <div class="line-num">23</div>
+            <div class="line-content">        print(f"Error: {e}")</div>
+        </div>
+        <div class="diff-row line-added">
+            <div class="line-num">24</div>
+            <div class="line-content">        return f"CRITICAL_FAILURE: {str(e)}"</div>
+        </div>
+    </div>
+
+</body>
+</html>
