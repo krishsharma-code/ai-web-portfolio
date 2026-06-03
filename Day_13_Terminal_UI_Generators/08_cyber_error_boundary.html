@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Error Boundary</title>
+    <style>
+        :root {
+            --error-red: #ff0055;
+            --bg: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .error-overlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 0, 85, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid var(--error-red);
+            box-sizing: border-box;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { border-color: var(--error-red); box-shadow: inset 0 0 50px rgba(255, 0, 85, 0.2); }
+            50% { border-color: #ff5e91; box-shadow: inset 0 0 100px rgba(255, 0, 85, 0.4); }
+            100% { border-color: var(--error-red); box-shadow: inset 0 0 50px rgba(255, 0, 85, 0.2); }
+        }
+
+        .error-content {
+            background: #000;
+            padding: 40px;
+            max-width: 600px;
+            border: 1px solid var(--error-red);
+            position: relative;
+        }
+
+        .error-header {
+            font-size: 2rem;
+            color: var(--error-red);
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .error-code {
+            background: #222;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--error-red);
+        }
+
+        .debug-steps {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .debug-steps li {
+            margin-bottom: 10px;
+        }
+
+        .btn-restart {
+            margin-top: 30px;
+            background: var(--error-red);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 0, 85, 0.5);
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            from { top: 0; }
+            to { top: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-overlay">
+        <div class="error-content">
+            <div class="scanline"></div>
+            <div class="error-header">CRITICAL_SYSTEM_FAILURE</div>
+            <div class="error-code">
+                ERROR_ID: 0x8842_NEURAL_LINK_DROPPED<br>
+                SOURCE: /Day_13/components/bridge.js:142
+            </div>
+            
+            <div class="debug-steps">
+                <strong>Recommended Recovery Steps:</strong>
+                <ul>
+                    <li>Verify GEMINI_API_KEY environment variables.</li>
+                    <li>Flush local sessionStorage and clear cache.</li>
+                    <li>Re-initialize kernel handshake via 'npm run handshake'.</li>
+                    <li>If failure persists, contact System Architect (Krish Sharma).</li>
+                </ul>
+            </div>
+
+            <button class="btn-restart" onclick="location.reload()">RE-INITIALIZE_SYSTEM</button>
+        </div>
+    </div>
+
+</body>
+</html>
