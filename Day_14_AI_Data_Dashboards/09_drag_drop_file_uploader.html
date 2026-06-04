@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Uploader</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .upload-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px dashed #334155;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .upload-container.drag-over {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.05);
+            transform: scale(1.02);
+        }
+        .icon {
+            font-size: 50px;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+        h3 { margin: 0 0 10px; }
+        p { color: #94a3b8; font-size: 14px; }
+        .file-list {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .file-item {
+            background: #0f172a;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            border-left: 4px solid #3b82f6;
+        }
+        .status { color: #10b981; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="upload-container" id="dropZone">
+        <div class="icon">📄</div>
+        <h3>Feed Gemini Docs</h3>
+        <p>Drag and drop your PDF or Text files here</p>
+        <p style="font-size: 12px;">Supported: .pdf, .txt, .md</p>
+        
+        <div class="file-list" id="fileList">
+            <!-- Uploaded files will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileList = document.getElementById('fileList');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            }, false);
+        });
+
+        dropZone.addEventListener('dragover', () => dropZone.classList.add('drag-over'));
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+        
+        dropZone.addEventListener('drop', (e) => {
+            dropZone.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            [...files].forEach(file => {
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.innerHTML = `
+                    <span>${file.name}</span>
+                    <span class="status">READY TO ANALYZE</span>
+                `;
+                fileList.appendChild(item);
+            });
+        }
+
+        dropZone.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.multiple = true;
+            input.onchange = (e) => handleFiles(e.target.files);
+            input.click();
+        });
+    </script>
+</body>
+</html>
