@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subnet Visualizer</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff41; /* Cyberpunk Green */
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        canvas {
+            border: 1px solid #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+            background: rgba(0, 255, 65, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #00ff41;
+        }
+        h2 { text-transform: uppercase; letter-spacing: 2px; }
+        .node-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border: 1px solid #00ff41;
+            font-size: 12px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Network Subnet Node Mapper</h2>
+    <div class="node-info" id="nodeInfo">Hover over a node to scan...</div>
+    <canvas id="visualizer"></canvas>
+    
+    <div class="controls">
+        STATUS: SYSTEM OPERATIONAL | SUB-NETWORKS DETECTED: 8 | SECURITY: ACTIVE
+    </div>
+
+    <script>
+        const canvas = document.getElementById('visualizer');
+        const ctx = canvas.getContext('2d');
+        const nodeInfo = document.getElementById('nodeInfo');
+
+        canvas.width = 800;
+        canvas.height = 500;
+
+        const nodes = [];
+        const numNodes = 8;
+
+        for (let i = 0; i < numNodes; i++) {
+            nodes.push({
+                x: Math.random() * (canvas.width - 100) + 50,
+                y: Math.random() * (canvas.height - 100) + 50,
+                ip: `192.168.1.${Math.floor(Math.random() * 254) + 1}`,
+                mask: "/24",
+                size: Math.random() * 10 + 5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw connections
+            ctx.strokeStyle = 'rgba(0, 255, 65, 0.2)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                }
+            }
+            ctx.stroke();
+
+            // Draw nodes
+            nodes.forEach(node => {
+                ctx.fillStyle = '#00ff41';
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ff41';
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+            });
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            let hovered = false;
+            nodes.forEach(node => {
+                const dx = mouseX - node.x;
+                const dy = mouseY - node.y;
+                if (Math.sqrt(dx*dx + dy*dy) < node.size + 5) {
+                    nodeInfo.innerHTML = `SCANNING NODE...<br>IP: ${node.ip}<br>MASK: ${node.mask}<br>STRENGTH: ${Math.floor(node.size * 10)}%`;
+                    hovered = true;
+                }
+            });
+
+            if (!hovered) nodeInfo.innerHTML = "Hover over a node to scan...";
+        });
+
+        setInterval(() => {
+            nodes.forEach(node => {
+                node.x += (Math.random() - 0.5) * 2;
+                node.y += (Math.random() - 0.5) * 2;
+            });
+            draw();
+        }, 50);
+
+        draw();
+    </script>
+</body>
+</html>
