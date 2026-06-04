@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison Table</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            padding: 50px;
+        }
+        .table-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: auto;
+            background-color: #1e293b;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 20px;
+            border-bottom: 1px solid #334155;
+        }
+        thead th {
+            background-color: #111827;
+            position: sticky;
+            top: 0;
+            color: #3b82f6;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        .feature-name {
+            font-weight: bold;
+            color: #94a3b8;
+        }
+        .check { color: #10b981; }
+        .cross { color: #ef4444; }
+        .badge-flash { background: #3b82f6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; }
+        .badge-pro { background: #8b5cf6; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 40px;">Gemini Family Specs</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Gemini 2.0 Flash <span class="badge-flash">SPEED</span></th>
+                    <th>Gemini 2.0 Pro <span class="badge-pro">REASONING</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="feature-name">Context Window</td>
+                    <td>1,048,576 tokens</td>
+                    <td>2,097,152 tokens</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Multimodal Input</td>
+                    <td class="check">✔ Supported</td>
+                    <td class="check">✔ Supported</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Native Reasoning</td>
+                    <td>Optimized for Latency</td>
+                    <td>High-Complexity Output</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Training Data Cutoff</td>
+                    <td>Late 2024</td>
+                    <td>Late 2024</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Batch Processing</td>
+                    <td class="check">✔ Available</td>
+                    <td class="check">✔ Available</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Cost (per 1M tokens)</td>
+                    <td>$0.10 (Input)</td>
+                    <td>$3.50 (Input)</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Execution Speed</td>
+                    <td>Extreme / Ultra-low Latency</td>
+                    <td>Moderate / High Precision</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
