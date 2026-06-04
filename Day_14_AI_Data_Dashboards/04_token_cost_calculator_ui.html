@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Cost Calculator</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator-card {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid #334155;
+        }
+        h2 { margin-top: 0; color: #3b82f6; text-align: center; }
+        .input-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-size: 14px; color: #94a3b8; }
+        input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: #3b82f6;
+        }
+        .value-display {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        .result-panel {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px dashed #3b82f6;
+        }
+        .total-cost {
+            font-size: 32px;
+            font-weight: 800;
+            color: #10b981;
+            margin: 10px 0;
+        }
+        .small-text { font-size: 12px; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="calculator-card">
+        <h2>Gemini API Estimator</h2>
+        
+        <div class="input-group">
+            <label for="inputTokens">Input Tokens (Millions)</label>
+            <input type="range" id="inputTokens" min="0" max="100" step="0.1" value="1">
+            <div class="value-display"><span id="inputVal">1.0 M</span></div>
+        </div>
+
+        <div class="input-group">
+            <label for="outputTokens">Output Tokens (Millions)</label>
+            <input type="range" id="outputTokens" min="0" max="10" step="0.01" value="0.5">
+            <div class="value-display"><span id="outputVal">0.50 M</span></div>
+        </div>
+
+        <div class="result-panel">
+            <div class="small-text">Estimated Daily Cost</div>
+            <div class="total-cost" id="totalCost">$0.30</div>
+            <div class="small-text">Based on $0.10/1M input & $0.40/1M output</div>
+        </div>
+    </div>
+
+    <script>
+        const inputTokens = document.getElementById('inputTokens');
+        const outputTokens = document.getElementById('outputTokens');
+        const inputVal = document.getElementById('inputVal');
+        const outputVal = document.getElementById('outputVal');
+        const totalCost = document.getElementById('totalCost');
+
+        function update() {
+            const inM = parseFloat(inputTokens.value);
+            const outM = parseFloat(outputTokens.value);
+            
+            inputVal.textContent = `${inM.toFixed(1)} M`;
+            outputVal.textContent = `${outM.toFixed(2)} M`;
+            
+            const cost = (inM * 0.10) + (outM * 0.40);
+            totalCost.textContent = `$${cost.toFixed(2)}`;
+        }
+
+        inputTokens.addEventListener('input', update);
+        outputTokens.addEventListener('input', update);
+        update();
+    </script>
+</body>
+</html>
