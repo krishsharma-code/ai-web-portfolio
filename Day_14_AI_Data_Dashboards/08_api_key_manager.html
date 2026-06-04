@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Key Manager</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .settings-panel {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        h2 { margin-top: 0; margin-bottom: 20px; font-size: 20px; border-bottom: 1px solid #334155; padding-bottom: 15px; }
+        .key-row {
+            margin-bottom: 25px;
+        }
+        label { display: block; font-size: 13px; color: #94a3b8; margin-bottom: 8px; font-weight: 600; }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            flex: 1;
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            color: #f1f5f9;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus { border-color: #3b82f6; }
+        .toggle-btn {
+            background: #334155;
+            border: none;
+            color: #94a3b8;
+            padding: 0 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .toggle-btn:hover { background: #475569; color: white; }
+        .save-btn {
+            width: 100%;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .save-btn:hover { background-color: #2563eb; }
+        .hint { font-size: 12px; color: #64748b; margin-top: 8px; display: block; }
+    </style>
+</head>
+<body>
+    <div class="settings-panel">
+        <h2>Developer Settings</h2>
+        
+        <div class="key-row">
+            <label>GEMINI API KEY</label>
+            <div class="input-wrapper">
+                <input type="password" id="geminiKey" value="AIzaSyB_kR1sh_Sh4rm4_D3m0_K3y" readonly>
+                <button class="toggle-btn" id="toggleGemini">Show</button>
+            </div>
+            <span class="hint">Never share your API keys in client-side code.</span>
+        </div>
+
+        <div class="key-row">
+            <label>GITHUB TOKEN</label>
+            <div class="input-wrapper">
+                <input type="password" id="githubKey" value="ghp_v3ry_s3cur3_p4ssw0rd_h3r3" readonly>
+                <button class="toggle-btn" id="toggleGithub">Show</button>
+            </div>
+        </div>
+
+        <button class="save-btn">Update Settings</button>
+    </div>
+
+    <script>
+        function setupToggle(btnId, inputId) {
+            const btn = document.getElementById(btnId);
+            const input = document.getElementById(inputId);
+            
+            btn.addEventListener('click', () => {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    btn.textContent = 'Hide';
+                } else {
+                    input.type = 'password';
+                    btn.textContent = 'Show';
+                }
+            });
+        }
+
+        setupToggle('toggleGemini', 'geminiKey');
+        setupToggle('toggleGithub', 'githubKey');
+    </script>
+</body>
+</html>
