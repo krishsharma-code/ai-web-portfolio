@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Health Widget</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .widget {
+            background-color: #1e293b;
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            gap: 30px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .metric {
+            text-align: center;
+        }
+        .progress-ring {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        svg {
+            transform: rotate(-90deg);
+        }
+        circle {
+            fill: transparent;
+            stroke-width: 8;
+            stroke-linecap: round;
+        }
+        .bg-circle { stroke: #334155; }
+        .active-circle {
+            stroke: #3b82f6;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 1s ease-out;
+        }
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .label {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget">
+        <div class="metric">
+            <div class="progress-ring">
+                <svg width="100" height="100">
+                    <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                    <circle id="cpuCircle" class="active-circle" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div class="percentage" id="cpuText">0%</div>
+            </div>
+            <div class="label">CPU LOAD</div>
+        </div>
+
+        <div class="metric">
+            <div class="progress-ring">
+                <svg width="100" height="100">
+                    <circle class="bg-circle" cx="50" cy="50" r="45"></circle>
+                    <circle id="memCircle" class="active-circle" style="stroke: #8b5cf6;" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div class="percentage" id="memText">0%</div>
+            </div>
+            <div class="label">MEMORY</div>
+        </div>
+    </div>
+
+    <script>
+        function updateMetric(circleId, textId, value) {
+            const circle = document.getElementById(circleId);
+            const text = document.getElementById(textId);
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (value / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+            text.textContent = `${value}%`;
+        }
+
+        setInterval(() => {
+            const cpu = Math.floor(Math.random() * 40) + 20; // 20-60%
+            const mem = Math.floor(Math.random() * 30) + 50; // 50-80%
+            updateMetric('cpuCircle', 'cpuText', cpu);
+            updateMetric('memCircle', 'memText', mem);
+        }, 2000);
+
+        // Initial update
+        setTimeout(() => {
+            updateMetric('cpuCircle', 'cpuText', 42);
+            updateMetric('memCircle', 'memText', 68);
+        }, 100);
+    </script>
+</body>
+</html>
