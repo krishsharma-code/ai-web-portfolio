@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper Results Grid</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: sans-serif;
+            padding: 40px;
+        }
+        .masonry-grid {
+            columns: 4;
+            column-gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #334155;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #3b82f6;
+            font-size: 18px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #334155;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        @media (max-width: 1024px) { .masonry-grid { columns: 3; } }
+        @media (max-width: 768px) { .masonry-grid { columns: 2; } }
+        @media (max-width: 480px) { .masonry-grid { columns: 1; } }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 40px;">Scraped Content Pipeline</h1>
+    <div class="masonry-grid" id="grid">
+        <!-- JS generated items -->
+    </div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const sampleData = [
+            { title: "Project Alpha", desc: "Found 12 matching elements for the requested query. Extraction successful.", type: "Research" },
+            { title: "Data Stream 02", desc: "Real-time updates captured from the main dashboard. Data normalized to JSON standard.", type: "Real-time" },
+            { title: "Article Summary", desc: "Condensed version of the 5000-word article into 3 key points for rapid ingestion.", type: "AI Summary" },
+            { title: "Market Trends", desc: "Volatility index analyzed. 15% increase in core sectors noted over the last 48 hours.", type: "Analysis" },
+            { title: "System Logs", desc: "Cleaned and formatted logs for anomaly detection algorithms. No critical errors found.", type: "System" },
+            { title: "User Feedback", desc: "Sentiments extracted from 100+ comments. 80% positive outlook on the new features.", type: "Sentiment" },
+            { title: "Cloud Node Status", desc: "All 5 nodes operational. Latency within acceptable bounds (< 20ms).", type: "Infrastructure" },
+            { title: "API Endpoint Map", desc: "Identified 23 unique endpoints. Documentation generated automatically.", type: "Documentation" }
+        ];
+
+        sampleData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${item.title}</h3>
+                <p>${item.desc}</p>
+                <div class="badge">${item.type}</div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
