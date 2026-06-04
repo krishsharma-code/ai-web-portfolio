@@ -168,6 +168,19 @@ This repository demonstrates foundational HTML5 and CSS3 skills. The goal was to
 - **09_live_activity_feed.html**: Event stream container displaying real-time task notifications using CSS absolute transform slide transitions.
 - **10_settings_sync_panel.html**: Interface panel handling API configurations and themes, with encrypted state backups to sessionStorage.
 
+### Day 14: AI Data Dashboards (`Day_14_AI_Data_Dashboards/`)
+*Sleek AI Data Visualization & Interactive Patterns* ✅ **COMPLETED**
+- **01_gemini_chat_interface.html**: Modern, responsive chat UI with typing indicators and AI message bubbles.
+- **02_scraper_results_grid.html**: Masonry-style card layout for displaying scraped JSON data with hover effects.
+- **03_subnet_visualizer.html**: Interactive visual node map showing IP ranges with cyberpunk canvas animations.
+- **04_token_cost_calculator_ui.html**: Dynamic usage estimator with range sliders and real-time cost calculation.
+- **05_code_block_highlighter.html**: Markdown-style code container with syntax highlighting and clipboard functionality.
+- **06_model_comparison_table.html**: Responsive side-by-side spec comparison for Gemini models with sticky headers.
+- **07_system_health_widget.html**: Compact monitoring dashboard with animated circular progress rings.
+- **08_api_key_manager.html**: Secure-looking settings panel with masked inputs and visibility toggles.
+- **09_drag_drop_file_uploader.html**: Custom upload zone with drag-over highlights for AI document ingestion.
+- **10_animated_loading_states.html**: Collection of 3 performance-optimized CSS loaders for AI generation wait times.
+
 ## 🎨 Tech Stack
 - **HTML5**: Used for semantic structure (header, main, footer, section, form).
 - **CSS3**: Internal styling for typography, layout (Flexbox), and interactive elements.
