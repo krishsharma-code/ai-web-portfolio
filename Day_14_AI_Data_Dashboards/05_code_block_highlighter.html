@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Block Highlighter</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Fira Code', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+        .code-container {
+            background-color: #1e293b;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            position: relative;
+            border: 1px solid #334155;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .code-header {
+            background-color: #111827;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .copy-btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover { background-color: #2563eb; }
+        .keyword { color: #f472b6; }
+        .function { color: #38bdf8; }
+        .string { color: #fbbf24; }
+        .comment { color: #64748b; font-style: italic; }
+        .number { color: #a78bfa; }
+    </style>
+</head>
+<body>
+    <h1>AI Generated Logic</h1>
+    <div class="code-container">
+        <div class="code-header">
+            <span>python_agent.py</span>
+            <button class="copy-btn" id="copyBtn">Copy Code</button>
+        </div>
+        <pre id="codeContent"><span class="keyword">import</span> os
+<span class="keyword">from</span> google <span class="keyword">import</span> genai
+
+<span class="comment"># Initialize the AI Agent</span>
+client = genai.Client(api_key=os.getenv(<span class="string">"GEMINI_KEY"</span>))
+
+<span class="keyword">def</span> <span class="function">generate_response</span>(prompt):
+    <span class="keyword">try</span>:
+        response = client.models.generate_content(
+            model=<span class="string">"gemini-2.0-flash"</span>,
+            contents=prompt
+        )
+        <span class="keyword">return</span> response.text
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        <span class="function">print</span>(<span class="string">f"Error: {e}"</span>)
+        <span class="keyword">return</span> <span class="keyword">None</span>
+
+<span class="comment"># Execute logic</span>
+result = generate_response(<span class="string">"Explain recursion"</span>)
+<span class="function">print</span>(result)</pre>
+    </div>
+
+    <script>
+        const copyBtn = document.getElementById('copyBtn');
+        const codeContent = document.getElementById('codeContent');
+
+        copyBtn.addEventListener('click', () => {
+            const text = codeContent.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                copyBtn.textContent = 'Copied!';
+                copyBtn.style.backgroundColor = '#10b981';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy Code';
+                    copyBtn.style.backgroundColor = '#3b82f6';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
